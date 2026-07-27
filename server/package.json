@@ -1,0 +1,26 @@
+{
+  "name": "cardapio-pix-server",
+  "version": "1.0.0",
+  "description": "Servidor para pagamentos PIX via Mercado Pago",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.3",
+    "mercadopago": "^2.0.15",
+    "mssql": "^12.2.1",
+    "multer": "^2.1.1",
+    "node-cron": "^4.2.1"
+  },
+  "optionalDependencies": {
+    "msnodesqlv8": "^5.2.0"
+  }
+}
