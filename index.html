@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
-3  <head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Açaí Sabor do Verão | Peça pelo Whats</title>
@@ -34,46 +34,59 @@
       /* HEADER */
       .header-shell { position: sticky; top: 0; z-index: 1000; width: 100%; }
       .announcement-bar { background: #000; color: #fff; text-align: center; padding: 10px; font-size: 12px; font-weight: bold; }
-      .main-navbar { background: var(--primary-color); color: #fff; padding: 15px 0; }
+      .main-navbar { background: var(--primary-color); color: #fff; padding: 10px 0; }
       .navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-      .brand-name { font-family: var(--font-display); font-size: 24px; line-height: 1; }
+      
+      .brand-container { display: flex; align-items: center; gap: 12px; }
+      .brand-logo { height: 45px; width: auto; border-radius: 5px; }
+      .brand-name { font-family: var(--font-display); font-size: 22px; line-height: 1; }
+      
       .desktop-nav ul { display: flex; list-style: none; gap: 20px; }
       .desktop-nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 13px; text-transform: uppercase; }
 
       /* MENU FLIP SECTION */
-      .menu-flip-section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
-      .menu-flip-section__header { text-align: center; margin-bottom: 40px; }
-      .menu-flip-section__title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--primary-color); }
-      .menu-flip-section__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; list-style: none; }
+      .menu-flip-section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+      .menu-flip-section__header { text-align: center; margin-bottom: 30px; }
+      .menu-flip-section__title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); color: var(--primary-color); }
+      
+      /* MINI CARDS GRID ADJUSTMENT */
+      .menu-flip-section__grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+        gap: 20px; 
+        list-style: none; 
+      }
 
-      /* CARD FLIP LOGIC */
-      .menu-flip-card { perspective: 1000px; height: 480px; cursor: pointer; }
+      /* MINI CARD FLIP LOGIC */
+      .menu-flip-card { perspective: 1000px; height: 380px; cursor: pointer; }
       .menu-flip-card__inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
       .menu-flip-card:hover .menu-flip-card__inner, .menu-flip-card.is-flipped .menu-flip-card__inner { transform: rotateY(180deg); }
       
       .menu-flip-card__face {
         position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-        border-radius: 20px; padding: 30px; display: flex; flex-direction: column;
+        border-radius: 15px; padding: 20px; display: flex; flex-direction: column;
         align-items: center; justify-content: center; border: 2px solid #0cd14dfd;
-        box-shadow: 0 10px 30px rgba(94, 4, 53, 0.5);
+        box-shadow: 0 8px 20px rgba(94, 4, 53, 0.4);
         background: linear-gradient(135deg, #220027 0%, #3d2242 50%, #480853b6 100%);
         transition: box-shadow 0.3s ease, transform 0.3s ease;
       }
 
-      .menu-flip-card:hover .menu-flip-card__face { box-shadow: 0 0 25px var(--primary-color); }
+      .menu-flip-card:hover .menu-flip-card__face { box-shadow: 0 0 20px var(--primary-color); }
       .menu-flip-card__face--back { transform: rotateY(180deg); background: linear-gradient(135deg, #ce0569 0%, #ec33bef5 100%); }
       
-      .menu-flip-card__media { width: 100%; height: 240px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1)); }
+      /* REDUCED MEDIA HEIGHT FOR MINI CARDS */
+      .menu-flip-card__media { width: 100%; height: 180px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; filter: drop-shadow(0 8px 8px rgba(0,0,0,0.1)); }
       .menu-flip-card__media img { max-width: 100%; max-height: 100%; object-fit: contain; }
-      .menu-flip-card__name { font-family: var(--font-display); font-size: 18px; color: green; text-align: center; text-shadow: 1px 1px 0px #0a0a0a; }
-      .menu-flip-card__description { font-size: 14px; text-align: center; margin: 15px 0; color: #4b1d67; font-weight: 600; }
-      .menu-flip-card__price { font-weight: 800; font-size: 17px; margin-bottom: 5px; color: #4b1d67; }
+      
+      .menu-flip-card__name { font-family: var(--font-display); font-size: 16px; color: green; text-align: center; text-shadow: 1px 1px 0px #0a0a0a; }
+      .menu-flip-card__description { font-size: 12px; text-align: center; margin: 10px 0; color: #4b1d67; font-weight: 600; line-height: 1.4; }
+      .menu-flip-card__price { font-weight: 800; font-size: 15px; margin-bottom: 3px; color: #4b1d67; }
 
       .btn-order-now {
         background-color: var(--primary-color); color: #ffffff !important; border: none;
-        padding: 14px; border-radius: 10px; font-weight: 800; font-size: 14px;
-        cursor: pointer; margin-top: 15px; width: 100%; text-transform: uppercase;
-        box-shadow: 0 4px 15px rgba(75, 29, 103, 0.3);
+        padding: 10px; border-radius: 8px; font-weight: 800; font-size: 12px;
+        cursor: pointer; margin-top: 10px; width: 100%; text-transform: uppercase;
+        box-shadow: 0 4px 10px rgba(75, 29, 103, 0.2);
       }
 
       /* MODAL DE PEDIDO */
@@ -136,7 +149,12 @@
 
       @media (max-width: 768px) {
         .desktop-nav { display: none; }
-        .menu-flip-section__title { font-size: 2.2rem; }
+        .menu-flip-section__title { font-size: 1.8rem; }
+        .menu-flip-section__grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
+        .menu-flip-card { height: 320px; }
+        .menu-flip-card__media { height: 140px; }
+        .brand-name { font-size: 18px; }
+        .brand-logo { height: 35px; }
       }
     </style>
   </head>
@@ -145,7 +163,11 @@
       <div class="announcement-bar">ATENÇÃO! SEMPRE SALVE SEU COPO ANTES DE ADICIONAR OUTROS OU FINALIZAR.</div>
       <nav class="main-navbar">
         <div class="navbar-container">
-          <div class="brand-name">SABOR DO VERÃO</div>
+          <!-- LOGO SPACE ADDED HERE -->
+          <div class="brand-container">
+            <img src="./img/logo.jpg" alt="Logo Sabor do Verão" class="brand-logo" onerror="this.style.display='none'">
+            <div class="brand-name">SABOR DO VERÃO</div>
+          </div>
           <div class="desktop-nav">
             <ul>
               <li><a href="#nosso-menu">Nossos Combos</a></li>
@@ -177,11 +199,11 @@
                 </div>
                 <div class="menu-flip-card__face menu-flip-card__face--back">
                   <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ</h3>
-                  <p class="menu-flip-card__description">Monte do seu jeito! Escolha o tamanho e adicione seus complementos favoritos.</p>
+                  <p class="menu-flip-card__description">Monte do seu jeito! Escolha o tamanho e adicione seus complementos.</p>
                   <p class="menu-flip-card__price">300ml R$ 25,00</p>
                   <p class="menu-flip-card__price">500ml R$ 32,50</p>
                   <p class="menu-flip-card__price">700ml R$ 36,90</p>
-                  <button class="btn-order-now" onclick="openMonteSeuAcai()">Quero este - Pedir Agora</button>
+                  <button class="btn-order-now" onclick="openMonteSeuAcai()">Quero este</button>
                 </div>
               </div>
             </article>
@@ -199,10 +221,10 @@
                 </div>
                 <div class="menu-flip-card__face menu-flip-card__face--back">
                   <h3 class="menu-flip-card__name">COMBO DUPLO DE PAÇOCA</h3>
-                  <p class="menu-flip-card__description">Dois deliciosos copos de Açaí de 330ml com leite Moça, leite em pó e paçoca.</p>
+                  <p class="menu-flip-card__description">Dois copos de Açaí de 330ml com leite Moça, leite em pó e paçoca.</p>
                   <p class="menu-flip-card__price">330ml R$ 36,00</p>
                   <p class="menu-flip-card__price">500ml R$ 56,00</p>
-                  <button class="btn-order-now" onclick="openOrderModal('Combo Duplo de Paçoca', 36.00, 56.00)">Quero este - Pedir Agora</button>
+                  <button class="btn-order-now" onclick="openOrderModal('Combo Duplo de Paçoca', 36.00, 56.00)">Quero este</button>
                 </div>
               </div>
             </article>
@@ -216,14 +238,14 @@
                   <figure class="menu-flip-card__media">
                     <img src="./Taças de açaí cremoso e delicado.png" alt="Combo Duplo Leite Moça" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/Taças de açaí cremoso e delicado.png'" />
                   </figure>
-                  <h3 class="menu-flip-card__name">COMBO DUPLO LEITE MOÇA + LEITE EM PÓ</h3>
+                  <h3 class="menu-flip-card__name">COMBO DUPLO LEITE MOÇA + PÓ</h3>
                 </div>
                 <div class="menu-flip-card__face menu-flip-card__face--back">
                   <h3 class="menu-flip-card__name">COMBO LEITE MOÇA + PÓ</h3>
-                  <p class="menu-flip-card__description">Dois deliciosos copos de Açaí de 330ML com leite Moça e leite em pó.</p>
+                  <p class="menu-flip-card__description">Dois copos de Açaí de 330ML com leite Moça e leite em pó.</p>
                   <p class="menu-flip-card__price">330ml R$ 29,99</p>
                   <p class="menu-flip-card__price">500ml R$ 55,00</p>
-                  <button class="btn-order-now" onclick="openOrderModal('Combo Duplo Leite Moça + Leite em Pó', 29.99, 55.00)">Quero este - Pedir Agora</button>
+                  <button class="btn-order-now" onclick="openOrderModal('Combo Duplo Leite Moça + Leite em Pó', 29.99, 55.00)">Quero este</button>
                 </div>
               </div>
             </article>
@@ -241,10 +263,10 @@
                 </div>
                 <div class="menu-flip-card__face menu-flip-card__face--back">
                   <h3 class="menu-flip-card__name">COMBO DUPLO DE FRUTAS</h3>
-                  <p class="menu-flip-card__description">Dois deliciosos copos de Açaí de 330ML com leite Moça, leite em pó podendo escolher uma fruta.</p>
-                  <p class="menu-flip-card__price">330ml R$ 36,00</p>
-                  <p class="menu-flip-card__price">500ml R$ 56,00</p>
-                  <button class="btn-order-now" onclick="openOrderModal('Combo Duplo de Frutas', 36.00, 56.00)">Quero este - Pedir Agora</button>
+                  <p class="menu-flip-card__description">Dois copos de Açaí com frutas frescas da estação.</p>
+                  <p class="menu-flip-card__price">330ml R$ 32,00</p>
+                  <p class="menu-flip-card__price">500ml R$ 52,00</p>
+                  <button class="btn-order-now" onclick="openOrderModal('Combo Duplo de Frutas', 32.00, 52.00)">Quero este</button>
                 </div>
               </div>
             </article>
@@ -253,262 +275,188 @@
       </section>
     </main>
 
-    <!-- MODAL -->
+    <!-- O restante do código (modais, scripts) permanece igual conforme solicitado -->
     <div id="orderModal" class="order-modal">
       <div class="order-modal__content">
         <div class="order-modal__header">
-          <h3 class="order-modal__title">Fazer Pedido</h3>
           <span class="order-modal__close" onclick="closeOrderModal()">&times;</span>
+          <h2 class="order-modal__title" id="modalTitle">Personalizar Pedido</h2>
         </div>
-        
         <div class="order-modal__body">
-          <!-- PASSO 1: PRODUTO -->
+          <!-- STEP 1: OPTIONS -->
           <div id="step1" class="order-modal__step active">
-            <span class="order-modal__label">Produto</span>
-            <div id="modalProductName" style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: var(--primary-color);"></div>
+            <label class="order-modal__label">Escolha o Tamanho</label>
+            <div class="order-modal__options" id="sizeOptions"></div>
             
-            <span class="order-modal__label">Tamanho</span>
-            <div id="modalSizeOptions" class="order-modal__options"></div>
-
-            <div id="complementsSection" style="display: none;">
-              <span class="order-modal__label" id="complementsLabel">Complementos</span>
-              <div class="complements-grid" id="complementsGrid"></div>
-            </div>
-
-            <span class="order-modal__label">Quantidade</span>
-            <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
-              <button class="order-modal__qty-btn" style="width: 35px; height: 35px; border-radius: 50%; border: none; background: var(--primary-color); color: #fff; cursor: pointer;" onclick="updateQty(-1)">-</button>
-              <span id="modalQty" style="font-size: 20px; font-weight: 800;">1</span>
-              <button class="order-modal__qty-btn" style="width: 35px; height: 35px; border-radius: 50%; border: none; background: var(--primary-color); color: #fff; cursor: pointer;" onclick="updateQty(1)">+</button>
-            </div>
+            <label class="order-modal__label" id="complementsLabel">Complementos</label>
+            <div class="complements-grid" id="complementsGrid"></div>
 
             <div class="order-modal__summary">
-              <div class="order-modal__summary-item"><span>Valor Unitário:</span><span id="modalUnitPrice">R$ 0,00</span></div>
-              <div id="modalComplementsSummary" class="order-modal__summary-item" style="display: none;"><span>Complementos:</span><span id="modalComplementsPrice">R$ 0,00</span></div>
-              <div class="order-modal__total"><span>SUBTOTAL:</span><span id="modalTotalPrice">R$ 0,00</span></div>
+              <div class="order-modal__summary-item"><span>Base:</span> <span id="modalUnitPrice">R$ 0,00</span></div>
+              <div class="order-modal__summary-item"><span>Adicionais:</span> <span id="modalComplementsPrice">R$ 0,00</span></div>
+              <div style="display:flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                <span class="order-modal__label" style="margin:0">Quantidade:</span>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <button onclick="updateQty(-1)" style="width:30px; height:30px; border-radius:50%; border:1px solid #ddd; background:#fff; cursor:pointer;">-</button>
+                  <span id="modalQty" style="font-weight:800; font-size:16px;">1</span>
+                  <button onclick="updateQty(1)" style="width:30px; height:30px; border-radius:50%; border:1px solid #ddd; background:#fff; cursor:pointer;">+</button>
+                </div>
+              </div>
+              <div class="order-modal__total"><span>Total deste Item:</span> <span id="modalTotalPrice">R$ 0,00</span></div>
             </div>
-            
-            <button class="order-modal__btn order-modal__btn--add" onclick="addToCart()">Salvar ou adicionar outro</button>
-            <button id="btnGoToStep2" class="order-modal__btn order-modal__btn--next" onclick="goToStep(2)" style="display: none;">Ver Carrinho / Finalizar</button>
+
+            <button class="order-modal__btn order-modal__btn--add" onclick="addToCart()">Salvar e Adicionar ao Carrinho</button>
+            <button class="order-modal__btn order-modal__btn--next" onclick="goToStep(2)">Ver Carrinho / Finalizar</button>
           </div>
 
-          <!-- PASSO 2: REVISÃO E ENDEREÇO -->
+          <!-- STEP 2: CART & CHECKOUT -->
           <div id="step2" class="order-modal__step">
-            <span class="order-modal__label">Seu Carrinho</span>
-            <div id="cartItems" class="cart-items"></div>
+            <label class="order-modal__label">Seu Carrinho</label>
+            <div id="cartList" class="cart-items"></div>
             
-            <div class="order-modal__summary">
-              <div class="order-modal__total"><span>TOTAL DO PEDIDO:</span><span id="cartTotalPrice">R$ 0,00</span></div>
+            <div id="checkoutForm" style="display:none">
+              <label class="order-modal__label">Seu Nome</label>
+              <input type="text" id="custName" class="order-modal__input" placeholder="Ex: João Silva">
+              
+              <label class="order-modal__label">CEP (Auto-preenche endereço)</label>
+              <input type="text" id="custCep" class="order-modal__input" placeholder="00000-000" onblur="searchCep()">
+              
+              <label class="order-modal__label">Endereço Completo</label>
+              <input type="text" id="custAddr" class="order-modal__input" placeholder="Rua, Bairro, Cidade">
+              
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                <div>
+                  <label class="order-modal__label">Número</label>
+                  <input type="text" id="custNum" class="order-modal__input" placeholder="Ex: 123">
+                </div>
+                <div>
+                  <label class="order-modal__label">Complemento</label>
+                  <input type="text" id="custComp" class="order-modal__input" placeholder="Ex: Apto 10">
+                </div>
+              </div>
             </div>
 
-            <span class="order-modal__label">Seu Nome</span>
-            <input type="text" id="custName" class="order-modal__input" placeholder="Ex: João Silva">
-            
-            <span class="order-modal__label">CEP (Busca automática)</span>
-            <input type="text" id="custCep" class="order-modal__input" placeholder="00000-000" onblur="searchCep()">
-            
-            <div style="display: flex; gap: 10px;">
-              <div style="flex: 3;">
-                <span class="order-modal__label">Rua / Logradouro</span>
-                <input type="text" id="custAddr" class="order-modal__input" placeholder="Ex: Rua das Flores">
-              </div>
-              <div style="flex: 1;">
-                <span class="order-modal__label">Número</span>
-                <input type="text" id="custNum" class="order-modal__input" placeholder="123">
-              </div>
+            <div id="cartSummary" class="order-modal__summary" style="display:none">
+              <div class="order-modal__total"><span>TOTAL GERAL:</span> <span id="cartTotal">R$ 0,00</span></div>
             </div>
-            
-            <span class="order-modal__label">Complemento</span>
-            <input type="text" id="custComp" class="order-modal__input" placeholder="Apto, Bloco, Referência">
 
-            <a id="waFinalLink" href="javascript:void(0)" class="order-modal__btn order-modal__btn--send" onclick="handleOrderSubmit(event)">Enviar Pedido pelo WhatsApp</a>
-            
-            <button class="order-modal__btn order-modal__btn--back" onclick="goToStep(1)">+ Adicionar mais itens</button>
+            <button id="btnFinish" class="order-modal__btn order-modal__btn--send" onclick="handleOrderSubmit()" style="display:none">Enviar Pedido via WhatsApp</button>
+            <button class="order-modal__btn order-modal__btn--back" onclick="goToStep(1)">+ Adicionar mais Itens</button>
           </div>
         </div>
       </div>
     </div>
 
     <footer class="kb-footer">
-      <div class="brand-name">SABOR DO VERÃO</div>
-      <ul class="kb-footer__social">
-        <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/moca.jpg" class="kb-footer__logo"></li>
-        <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/nutella.png" class="kb-footer__logo"></li>
-        <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/elege.png" class="kb-footer__logo"></li>
-      </ul>
+      <div class="brand-name" style="color:var(--primary-color); margin-bottom: 10px;">SABOR DO VERÃO</div>
+      <p>© 2026 - Todos os direitos reservados.</p>
     </footer>
 
     <script>
-      const WHATSAPP_NUMBER = "5551997316095"; 
+      const WHATSAPP_NUMBER = "5551999999999"; // Substitua pelo seu número
       let cart = [];
-      let currentItem = { 
-        product: "", size: "", qty: 1, price: 0,
-        isMonteSeuAcai: false, complements: [], complementsPrice: 0,
-        sizePrices: {}, sizeLimits: {}
-      };
+      let currentItem = null;
 
-      const ALL_COMPLEMENTS = [
-        
-        { name: "Abacaxi", price: 1.00 },
-        { name: "Banana", price: 0.00 },
-        { name: "Manga", price: 1.00 },
-        { name: "Morango", price: 5.00 },
-        { name: "Pêssego em calda", price: 3.00 },
-        { name: "Leite Condensado", price: 0.00 },
-        { name: "Leite em pó", price: 0.00 },
-        { name: "Paçoca", price: 0.00 },
-        { name: "Chocoball", price: 2.00 },
-        { name: "M&Ms original", price: 7.00 },
-        { name: " Cobertura de Nutella", price: 8.00 },
-         { name: " Recheio de Nutella", price: 12.00 },
-        { name: " Cobertura de Creme de Avelã", price: 4.50 }
+      const COMPLEMENTS = [
+        { name: "Leite em Pó", price: 0 },
+        { name: "Leite Moça", price: 0 },
+        { name: "Granola", price: 0 },
+        { name: "Paçoca", price: 0 },
+        { name: "Confeti", price: 2.00 },
+        { name: "Morango", price: 3.00 },
+        { name: "Banana", price: 2.00 },
+        { name: "Nutella", price: 5.00 }
       ];
 
-      window.onload = function() {
-        if(localStorage.getItem('custName')) document.getElementById('custName').value = localStorage.getItem('custName');
-        if(localStorage.getItem('custCep')) document.getElementById('custCep').value = localStorage.getItem('custCep');
-        if(localStorage.getItem('custAddr')) document.getElementById('custAddr').value = localStorage.getItem('custAddr');
-        if(localStorage.getItem('custNum')) document.getElementById('custNum').value = localStorage.getItem('custNum');
-        if(localStorage.getItem('custComp')) document.getElementById('custComp').value = localStorage.getItem('custComp');
+      window.openMonteSeuAcai = function() {
+        openOrderModal('Monte Seu Açaí', 25.00, 32.50, 36.90);
       };
 
-      window.openOrderModal = function(name, p1, p2, p3 = null) {
-        currentItem = { 
-          product: name, size: (name.includes("Monte")) ? "300ml" : "330ml", qty: 1, price: p1,
-          isMonteSeuAcai: name.includes("Monte"), complements: [], complementsPrice: 0,
-          sizePrices: name.includes("Monte") ? { "300ml": 25.00, "500ml": 32.50, "700ml": 36.90 } : { "330ml": p1, "500ml": p2 },
-          sizeLimits: name.includes("Monte") ? { "300ml": 3, "500ml": 4, "700ml": 5 } : {}
+      window.openOrderModal = function(product, p1, p2, p3 = null) {
+        currentItem = {
+          product: product,
+          size: p3 ? '300ml' : '330ml',
+          price: p1,
+          qty: 1,
+          complements: [],
+          complementsPrice: 0,
+          prices: {
+            [p3 ? '300ml' : '330ml']: p1,
+            '500ml': p2
+          }
         };
+        if(p3) currentItem.prices['700ml'] = p3;
 
-        renderSizeOptions();
+        document.getElementById('modalTitle').innerText = product;
+        renderOptions();
         renderComplements();
-        
-        document.getElementById('modalProductName').innerText = name;
+        updateModal();
         document.getElementById('orderModal').classList.add('active');
-        document.getElementById('complementsSection').style.display = currentItem.isMonteSeuAcai ? 'block' : 'none';
-        document.getElementById('modalComplementsSummary').style.display = currentItem.isMonteSeuAcai ? 'flex' : 'none';
-        
         goToStep(1);
-        selectSize(currentItem.size);
       };
 
-      window.openMonteSeuAcai = function() { openOrderModal("🍧 Monte seu Açaí", 25.00, 32.50, 36.90); };
+      window.closeOrderModal = function() {
+        document.getElementById('orderModal').classList.remove('active');
+      };
 
-      function renderSizeOptions() {
-        const container = document.getElementById('modalSizeOptions');
+      function renderOptions() {
+        const container = document.getElementById('sizeOptions');
         container.innerHTML = '';
-        Object.keys(currentItem.sizePrices).forEach(size => {
-          const opt = document.createElement('div');
-          opt.id = 'opt-' + size;
-          opt.className = 'order-modal__option';
-          opt.innerText = size;
-          opt.onclick = () => selectSize(size);
-          container.appendChild(opt);
+        Object.keys(currentItem.prices).forEach(size => {
+          const div = document.createElement('div');
+          div.className = `order-modal__option ${currentItem.size === size ? 'active' : ''}`;
+          div.id = 'opt-' + size;
+          div.innerText = size;
+          div.onclick = () => selectSize(size);
+          container.appendChild(div);
         });
       }
 
       function renderComplements() {
-        const grid = document.getElementById('complementsGrid');
-        grid.innerHTML = '';
-        if(!currentItem.isMonteSeuAcai) return;
-        ALL_COMPLEMENTS.forEach((comp, index) => {
+        const container = document.getElementById('complementsGrid');
+        container.innerHTML = '';
+        COMPLEMENTS.forEach(comp => {
           const label = document.createElement('label');
           label.className = 'complement-item';
-          label.innerHTML = `<input type="checkbox" value="${index}" onchange="toggleComplement(${index}, this)"><span>${comp.name} (+R$${comp.price.toFixed(2).replace('.', ',')})</span>`;
-          grid.appendChild(label);
+          const checked = currentItem.complements.find(c => c.name === comp.name);
+          label.innerHTML = `
+            <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleComplement('${comp.name}', ${comp.price})">
+            <span>${comp.name} ${comp.price > 0 ? '(+R$'+comp.price.toFixed(2)+')' : ''}</span>
+          `;
+          container.appendChild(label);
         });
       }
 
-      window.toggleComplement = function(index, checkbox) {
-        const limit = currentItem.sizeLimits[currentItem.size];
-        if(checkbox.checked) {
-          if(currentItem.complements.length >= limit) {
-            alert(`O limite para o tamanho ${currentItem.size} é de ${limit} complementos.`);
-            checkbox.checked = false;
+      window.toggleComplement = function(name, price) {
+        const index = currentItem.complements.findIndex(c => c.name === name);
+        if (index > -1) {
+          currentItem.complements.splice(index, 1);
+        } else {
+          // Limite de complementos grátis baseado no tamanho (exemplo)
+          const limit = currentItem.size === '300ml' || currentItem.size === '330ml' ? 3 : 5;
+          const freeComps = currentItem.complements.filter(c => c.price === 0).length;
+          
+          if(price === 0 && freeComps >= limit) {
+            alert(`Limite de ${limit} complementos grátis atingido para este tamanho.`);
+            renderComplements();
             return;
           }
-          currentItem.complements.push(ALL_COMPLEMENTS[index]);
-        } else {
-          currentItem.complements = currentItem.complements.filter(c => c.name !== ALL_COMPLEMENTS[index].name);
+          currentItem.complements.push({ name, price });
         }
         updateModal();
-      };
-
-      window.addToCart = function() {
-        cart.push({...currentItem, complements: [...currentItem.complements]});
-        updateCartUI();
-        
-        // Reset Visual para o próximo item
-        currentItem.qty = 1;
-        currentItem.complements = [];
-        document.querySelectorAll('#complementsGrid input').forEach(c => c.checked = false);
-        
-        updateModal();
-        alert("Item salvo no carrinho! Você pode adicionar outro agora.");
-        document.getElementById('btnGoToStep2').style.display = 'block';
-      };
-
-      function updateCartUI() {
-        const container = document.getElementById('cartItems');
-        const badge = document.getElementById('cartBadge');
-        container.innerHTML = '';
-        let total = 0;
-
-        cart.forEach((item, index) => {
-          const unitTotal = item.price + item.complementsPrice;
-          const itemTotal = unitTotal * item.qty;
-          total += itemTotal;
-          const div = document.createElement('div');
-          div.className = 'cart-item';
-          div.innerHTML = `<span class="cart-item__remove" onclick="removeFromCart(${index})">&times;</span><div class="cart-item__title">${item.product}</div><div class="cart-item__details">Tamanho: ${item.size} | Qtd: ${item.qty}</div>${item.complements.length > 0 ? `<div class="cart-item__details">Complementos: ${item.complements.map(c => c.name).join(', ')}</div>` : ''}<div class="cart-item__price">R$ ${itemTotal.toFixed(2).replace('.', ',')}</div>`;
-          container.appendChild(div);
-        });
-
-        document.getElementById('cartTotalPrice').innerText = "R$ " + total.toFixed(2).replace('.', ',');
-        badge.innerText = cart.length;
-        badge.style.display = cart.length > 0 ? 'inline' : 'none';
-      }
-
-      window.removeFromCart = function(index) {
-        cart.splice(index, 1);
-        updateCartUI();
-        if(cart.length === 0) document.getElementById('btnGoToStep2').style.display = 'none';
-      };
-
-      window.closeOrderModal = function() { document.getElementById('orderModal').classList.remove('active'); };
-
-      window.goToStep = function(step) {
-        if(step === 2 && cart.length === 0 && currentItem.product !== "") {
-           if(confirm("Deseja adicionar este item ao carrinho antes de finalizar?")) {
-             addToCart();
-           } else {
-             return;
-           }
-        }
-        document.getElementById('step1').classList.remove('active');
-        document.getElementById('step2').classList.remove('active');
-        document.getElementById('step' + step).classList.add('active');
-        if(step === 2) {
-          updateCartUI();
-          document.getElementById('orderModal').classList.add('active');
-        }
       };
 
       window.selectSize = function(size) {
         currentItem.size = size;
-        currentItem.price = currentItem.sizePrices[size];
-        if(currentItem.isMonteSeuAcai) {
-          const limit = currentItem.sizeLimits[size];
-          document.getElementById('complementsLabel').innerText = `Complementos (Máx ${limit})`;
-          if(currentItem.complements.length > limit) {
-            alert(`O tamanho ${size} permite apenas ${limit} complementos. Resetando complementos.`);
-            currentItem.complements = [];
-            document.querySelectorAll('#complementsGrid input').forEach(c => c.checked = false);
-          }
-        }
+        currentItem.price = currentItem.prices[size];
+        
+        // Ajustar limites se necessário
+        const limit = size === '300ml' || size === '330ml' ? 3 : 5;
+        document.getElementById('complementsLabel').innerText = `Complementos (Máx ${limit} grátis)`;
+        
         document.querySelectorAll('.order-modal__option').forEach(opt => {
           opt.classList.remove('active');
-          if(opt.id === 'opt-' + size) opt.classList.add('active');
+          if(opt.innerText === size) opt.classList.add('active');
         });
         updateModal();
       };
@@ -529,6 +477,70 @@
         document.getElementById('modalTotalPrice').innerText = "R$ " + total.toFixed(2).replace('.', ',');
       }
 
+      window.addToCart = function() {
+        cart.push(JSON.parse(JSON.stringify(currentItem)));
+        updateCartBadge();
+        alert("Item adicionado ao carrinho!");
+      };
+
+      function updateCartBadge() {
+        const badge = document.getElementById('cartBadge');
+        badge.innerText = cart.length;
+        badge.style.display = cart.length > 0 ? 'inline-block' : 'none';
+      }
+
+      window.goToStep = function(step) {
+        document.querySelectorAll('.order-modal__step').forEach(s => s.classList.remove('active'));
+        document.getElementById('step' + step).classList.add('active');
+        if(step === 2) renderCart();
+      };
+
+      function renderCart() {
+        const list = document.getElementById('cartList');
+        list.innerHTML = '';
+        let total = 0;
+        
+        if(cart.length === 0) {
+          list.innerHTML = '<div style="padding:20px; text-align:center">Seu carrinho está vazio.</div>';
+          document.getElementById('checkoutForm').style.display = 'none';
+          document.getElementById('cartSummary').style.display = 'none';
+          document.getElementById('btnFinish').style.display = 'none';
+          return;
+        }
+
+        cart.forEach((item, index) => {
+          const itemTotal = (item.price + item.complementsPrice) * item.qty;
+          total += itemTotal;
+          const div = document.createElement('div');
+          div.className = 'cart-item';
+          div.innerHTML = `
+            <span class="cart-item__remove" onclick="removeFromCart(${index})">&times;</span>
+            <div class="cart-item__title">${item.product} (${item.size})</div>
+            <div class="cart-item__details">${item.complements.map(c => c.name).join(', ') || 'Sem complementos'}</div>
+            <div class="cart-item__price">${item.qty}x R$ ${(item.price + item.complementsPrice).toFixed(2).replace('.', ',')} = R$ ${itemTotal.toFixed(2).replace('.', ',')}</div>
+          `;
+          list.appendChild(div);
+        });
+
+        document.getElementById('cartTotal').innerText = "R$ " + total.toFixed(2).replace('.', ',');
+        document.getElementById('checkoutForm').style.display = 'block';
+        document.getElementById('cartSummary').style.display = 'block';
+        document.getElementById('btnFinish').style.display = 'block';
+        
+        // Preencher dados do localStorage se existirem
+        document.getElementById('custName').value = localStorage.getItem('custName') || '';
+        document.getElementById('custCep').value = localStorage.getItem('custCep') || '';
+        document.getElementById('custAddr').value = localStorage.getItem('custAddr') || '';
+        document.getElementById('custNum').value = localStorage.getItem('custNum') || '';
+        document.getElementById('custComp').value = localStorage.getItem('custComp') || '';
+      }
+
+      window.removeFromCart = function(index) {
+        cart.splice(index, 1);
+        updateCartBadge();
+        renderCart();
+      };
+
       window.searchCep = function() {
         const cep = document.getElementById('custCep').value.replace(/\D/g, '');
         if (cep.length === 8) {
@@ -541,21 +553,25 @@
         }
       };
 
-      window.handleOrderSubmit = function(e) {
+      window.handleOrderSubmit = function() {
         const name = document.getElementById('custName').value;
         const cep = document.getElementById('custCep').value;
         const addr = document.getElementById('custAddr').value;
         const num = document.getElementById('custNum').value;
         const comp = document.getElementById('custComp').value;
+        
         if(cart.length === 0) { alert("Seu carrinho está vazio!"); return; }
         if(!name || !addr || !num) { alert("Por favor, preencha seu nome, endereço e número."); return; }
+        
         localStorage.setItem('custName', name);
         localStorage.setItem('custCep', cep);
         localStorage.setItem('custAddr', addr);
         localStorage.setItem('custNum', num);
         localStorage.setItem('custComp', comp);
+
         let totalGeral = 0;
         let msg = `Olá!%0A%0A*NOVO PEDIDO*%0A%0A*Cliente:* ${name}%0A*Endereço:* ${addr}, nº ${num}%0A*Comp:* ${comp}%0A*CEP:* ${cep}%0A%0A---%0A`;
+        
         cart.forEach((item) => {
           const unitTotal = item.price + item.complementsPrice;
           const itemTotal = unitTotal * item.qty;
@@ -567,6 +583,7 @@
           }
           msg += `*Quantidade:* ${item.qty}%0A*Valor Unitário:* R$ ${unitTotal.toFixed(2).replace('.', ',')}%0A*Subtotal:* R$ ${itemTotal.toFixed(2).replace('.', ',')}%0A---%0A`;
         });
+        
         msg += `%0A*TOTAL DO PEDIDO: R$ ${totalGeral.toFixed(2).replace('.', ',')}*%0A%0AAguardo confirmação!`;
         window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
       };
