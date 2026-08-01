@@ -19,14 +19,14 @@
 
     <style>
        :root {
-        --primary-color: #df0396f3;
-        --secondary-color: #000000;
-        --lilac-bright: #e0b0ff;
-        --lilac-glow: rgba(224, 176, 255, 0.6);
-        --kb-hero-bg: #010100;s
-        --font-display: 'Titan One', cursive;
-        --transition-base: 0.3s ease;
-      }
+    --primary-color: #df0396f3;
+    --secondary-color: #000000;
+    --lilac-bright: #e0b0ff;
+    --lilac-glow: rgba(224, 176, 255, 0.6);
+    --kb-hero-bg: #010100;
+    --font-display: 'Titan One', cursive;
+    --transition-base: 0.3s ease;
+}
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font-family: 'Open Sans', sans-serif; background-color: #0c0c0c; color: #333; overflow-x: hidden; }
@@ -54,23 +54,23 @@
       .menu-flip-card__face {
         position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
         border-radius: 20px; padding: 30px; display: flex; flex-direction: column;
-        align-items: center; justify-content: center; border: 2px solid #fff;
+        align-items: center; justify-content: center; border: 2px solid #0cd14dfd;
         box-shadow: 0 10px 30px rgba(94, 4, 53, 0.5);
         background: linear-gradient(135deg, #220027 0%, #3d2242 50%, #480853b6 100%);
         transition: box-shadow 0.3s ease, transform 0.3s ease;
       }
 
-      .menu-flip-card:hover .menu-flip-card__face { box-shadow: 0 0 25px var(--lilac-glow); }
-      .menu-flip-card__face--back { transform: rotateY(180deg); background: linear-gradient(135deg, #ce0569 0%, #936899f5 100%); }
+      .menu-flip-card:hover .menu-flip-card__face { box-shadow: 0 0 25px var(--primary-color); }
+      .menu-flip-card__face--back { transform: rotateY(180deg); background: linear-gradient(135deg, #ce0569 0%, #ec33bef5 100%); }
       
       .menu-flip-card__media { width: 100%; height: 240px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1)); }
       .menu-flip-card__media img { max-width: 100%; max-height: 100%; object-fit: contain; }
-      .menu-flip-card__name { font-family: var(--font-display); font-size: 18px; color: var(--primary-color); text-align: center; text-shadow: 1px 1px 0px #fff; }
+      .menu-flip-card__name { font-family: var(--font-display); font-size: 18px; color: green; text-align: center; text-shadow: 1px 1px 0px #0a0a0a; }
       .menu-flip-card__description { font-size: 14px; text-align: center; margin: 15px 0; color: #4b1d67; font-weight: 600; }
       .menu-flip-card__price { font-weight: 800; font-size: 17px; margin-bottom: 5px; color: #4b1d67; }
 
       .btn-order-now {
-        background-color: var(--primary-color); color: #fff !important; border: none;
+        background-color: var(--primary-color); color: #ffffff !important; border: none;
         padding: 14px; border-radius: 10px; font-weight: 800; font-size: 14px;
         cursor: pointer; margin-top: 15px; width: 100%; text-transform: uppercase;
         box-shadow: 0 4px 15px rgba(75, 29, 103, 0.3);
@@ -142,7 +142,7 @@
   </head>
   <body>
     <header class="header-shell">
-      <div class="announcement-bar">ATENÇÃO! DESCONTOS E CUPONS PROMOCIONAIS SÓ PODEM SER OBTIDOS EM NOSSO SITE E WHATS.</div>
+      <div class="announcement-bar">ATENÇÃO! SEMPRE SALVE SEU COPO ANTES DE ADICIONAR OUTROS OU FINALIZAR.</div>
       <nav class="main-navbar">
         <div class="navbar-container">
           <div class="brand-name">SABOR DO VERÃO</div>
@@ -160,8 +160,8 @@
     <main class="page-content">
       <section class="menu-flip-section" id="nosso-menu">
         <div class="menu-flip-section__header">
-          <h2 class="menu-flip-section__title">NOSSOS COMBOS</h2>
-          <p style="font-weight: 800; color: #666; letter-spacing: 2px;">ESCOLHA SEU COMBO FAVORITO</p>
+          <h2 class="menu-flip-section__title">Cárdapio Sabor do Verão </h2>
+          <p style="font-weight: 800; color: #f783ca; letter-spacing: 2px;">Monte seu Açaí ou escolha seu Combo</p>
         </div>
 
         <ul class="menu-flip-section__grid">
@@ -288,7 +288,7 @@
               <div class="order-modal__total"><span>SUBTOTAL:</span><span id="modalTotalPrice">R$ 0,00</span></div>
             </div>
             
-            <button class="order-modal__btn order-modal__btn--add" onclick="addToCart()">Salvar e adicionar outro</button>
+            <button class="order-modal__btn order-modal__btn--add" onclick="addToCart()">Salvar ou adicionar outro</button>
             <button id="btnGoToStep2" class="order-modal__btn order-modal__btn--next" onclick="goToStep(2)" style="display: none;">Ver Carrinho / Finalizar</button>
           </div>
 
@@ -348,18 +348,20 @@
       };
 
       const ALL_COMPLEMENTS = [
-        { name: "Leite Condensado", price: 2.00 },
-        { name: "Nutella", price: 4.00 },
-        { name: "Morango", price: 3.00 },
-        { name: "Banana", price: 2.00 },
-        { name: "Paçoca", price: 2.00 },
-        { name: "Granola", price: 2.00 },
-        { name: "Leite em pó", price: 2.00 },
-        { name: "Ovomaltine", price: 3.00 },
-        { name: "Confete", price: 2.00 },
-        { name: "Castanha", price: 3.00 },
-        { name: "Amendoim", price: 2.00 },
-        { name: "Coco", price: 2.00 }
+        
+        { name: "Abacaxi", price: 1.00 },
+        { name: "Banana", price: 0.00 },
+        { name: "Manga", price: 1.00 },
+        { name: "Morango", price: 5.00 },
+        { name: "Pêssego em calda", price: 3.00 },
+        { name: "Leite Condensado", price: 0.00 },
+        { name: "Leite em pó", price: 0.00 },
+        { name: "Paçoca", price: 0.00 },
+        { name: "Chocoball", price: 2.00 },
+        { name: "M&Ms original", price: 7.00 },
+        { name: " Cobertura de Nutella", price: 8.00 },
+         { name: " Recheio de Nutella", price: 12.00 },
+        { name: " Cobertura de Creme de Avelã", price: 4.50 }
       ];
 
       window.onload = function() {
