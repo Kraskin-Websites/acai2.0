@@ -19,7 +19,7 @@
 
     <style>
 :root {
-    --primary-color: #972772dc;
+    --primary-color: hsla(327, 91%, 45%, 0.863);
     --secondary-color: #000000;
     --lilac-bright: #e0b0ff;
     --lilac-glow: rgba(224, 176, 255, 0.6);
@@ -27,17 +27,18 @@
 }
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font-family: 'Open Sans', sans-serif; background-color: #20002C; color: #333; overflow-x: hidden; }
+      body { font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #20002C; color: #333; overflow-x: hidden; }
 
       /* HEADER */
       .header-shell { position: sticky; top: 0; z-index: 1000; width: 100%; }
       .announcement-bar { background: #000; color: #fff; text-align: center; padding: 10px; font-size: 12px; font-weight: bold; }
-      .main-navbar { background: var(--primary-color); color: #fff; padding: 10px 0; }
+      .main-navbar { background: var(--primary-color); color: #fff; padding: 10px 0;
+      box-shadow: 0px 4px 10px rgba(255, 0, 242, 0.5); }
       .navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
       
       .brand-container { display: flex; align-items: center; gap: 12px; }
       .brand-logo { height: 45px; width: auto; border-radius: 10px; }
-      .brand-name { font-family: var(--font-display); font-size: 22px; line-height: 1; }
+      .brand-name { font-family: g; font-size: 22px; line-height: 1; }
       
       .desktop-nav ul { display: flex; list-style: none; gap: 20px; }
       .desktop-nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 13px; text-transform: uppercase; }
@@ -45,7 +46,7 @@
       /* MENU FLIP SECTION */
       .menu-flip-section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
       .menu-flip-section__header { text-align: center; margin-bottom: 30px; }
-      .menu-flip-section__title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); color: var(--primary-color); }
+      .menu-flip-section__title { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--primary-color); }
       
       /* MINI CARDS GRID ADJUSTMENT */
       .menu-flip-section__grid { 
@@ -63,7 +64,7 @@
       .menu-flip-card__face {
         position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
         border-radius: 15px; padding: 20px; display: flex; flex-direction: column;
-        align-items: center; justify-content: center; border: 2px solid #FF00AA;
+        align-items: center; justify-content: center; border: 2px solid #e910a1;
         box-shadow: 0 8px 20px rgba(94, 4, 53, 0.4);
         background:linear-gradient(
 135deg,
@@ -77,11 +78,11 @@
       .menu-flip-card:hover .menu-flip-card__face { box-shadow: 0 0 20px var(--primary-color); }
       .menu-flip-card__face--back { transform: rotateY(180deg); background: linear-gradient(135deg, #ce0569 0%, #ec33bef5 100%); }
       
-      /* REDUCED MEDIA HEIGHT FOR MINI CARDS */
+      /* Categoria CARDS */
       .menu-flip-card__media { width: 100%; height: 180px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; filter: drop-shadow(0 8px 8px rgba(0,0,0,0.1)); }
       .menu-flip-card__media img { max-width: 100%; max-height: 100%; object-fit: contain; }
       
-      .menu-flip-card__name { font-family: var(--font-display); font-size: 16px; color: #3B0A45; text-align: center; text-shadow: 1px 1px 0px #0a0a0a; }
+      .menu-flip-card__name { font-family: var(--font-display); font-size: 16px; color: #f0057a; text-align: center; text-shadow: 1px 1px 0px #070707; }
       .menu-flip-card__description { font-size: 12px; text-align: center; margin: 10px 0; color: #fff; font-weight: 600; line-height: 1.4; }
       .menu-flip-card__price { font-weight: 800; font-size: 15px; margin-bottom: 3px; color: #4b1d67; }
 
@@ -100,7 +101,7 @@
       }
       .order-modal.active { display: flex !important; }
       .order-modal__content {
-        background-color: #fff; width: 100%; max-width: 450px; border-radius: 20px;
+        background-color: #0db9e4a9; width: 100%; max-width: 450px; border-radius: 20px;
         position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden;
         max-height: 90vh; overflow-y: auto;
       }
@@ -112,7 +113,7 @@
       .order-modal__step { display: none; }
       .order-modal__step.active { display: block; }
 
-      .order-modal__label { display: block; font-weight: 800; font-size: 11px; color: var(--primary-color); margin-bottom: 5px; text-transform: uppercase; }
+      .order-modal__label { display: block; font-weight: 800; font-size: 11px; color: black; margin-bottom: 5px; text-transform: uppercase; }
       .order-modal__options { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
       .order-modal__option { flex: 1; min-width: 80px; border: 2px solid #eee; padding: 12px; border-radius: 10px; text-align: center; cursor: pointer; font-weight: 700; font-size: 14px; }
       .order-modal__option.active { border-color: var(--primary-color); background: #f5ebff; color: var(--primary-color); }
@@ -186,7 +187,7 @@
       <section class="menu-flip-section" id="nosso-menu">
         <div class="menu-flip-section__header">
           <h2 class="menu-flip-section__title">Cárdapio Sabor do Verão </h2>
-          <p style="font-weight: 800; color: #f783ca; letter-spacing: 2px;">Monte seu Açaí ou escolha seu Combo</p>
+          <p style="font-weight: 800; color: #c4139d; letter-spacing: 2px;">Monte seu Açaí ou escolha seu Combo</p>
         </div>
 
         <ul class="menu-flip-section__grid">
@@ -282,7 +283,7 @@
     <div id="orderModal" class="order-modal">
       <div class="order-modal__content">
         <div class="order-modal__header">
-          <h3 class="order-modal__title">Fazer Pedido</h3>
+          <h3 class="order-modal__title">Escolha o copo e complementos, salve e adicione o próximo se desejado.</h3>
           <span class="order-modal__close" onclick="closeOrderModal()">&times;</span>
         </div>
         
@@ -290,7 +291,7 @@
           <!-- PASSO 1: PRODUTO -->
           <div id="step1" class="order-modal__step active">
             <span class="order-modal__label">Produto</span>
-            <div id="modalProductName" style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: var(--primary-color);"></div>
+            <div id="modalProductName" style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #fff;"></div>
             
             <span class="order-modal__label">Tamanho</span>
             <div id="modalSizeOptions" class="order-modal__options"></div>
@@ -389,17 +390,17 @@
         { name: " Cobertura de Creme de Avelã", price: 5.00 },
         { name: " Recheio de Creme de Avelã", price: 9.00 },
         { name: " Cobertura de Creme Leitinho", price: 5.00 },
-        { name: " Recheio de Creme leitinho", price: 9.00 },
+        { name: " Recheio de Creme de Avelã", price: 9.00 },
         { name: " Cobertura de Kinder Bueno", price: 5.00 },
         { name: " Recheio de Kinder Bueno", price: 9.00 },
-{ name: "Cupuaçu", price: 2.00 },
+{ name: "Cupuaçu", price: 0.00 },
 { name: "Granola", price: 0.00 },
 { name: "Jujubas", price: 1.00 },
 { name: "Bala de Goma", price: 1.00 },
 { name: "Calda Sabor Morango", price: 1.00 },
 { name: "Calda sabor Chocolate", price: 4.50 },
-{ name: "Bis Preto 4 und", price: 2.50 },
-{ name: "Bis Branco 4 und", price: 2.50 },
+{ name: "Bis Preto 3 und", price: 2.50 },
+{ name: "Bis Branco 3 und", price: 2.50 },
 { name: "Stikadinho 1 und", price: 2.50 },
 { name: "Bombom Ouro Branco", price: 3.00 },
 { name: "Sucrilhos Original", price: 1.00 },
