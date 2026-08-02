@@ -18,18 +18,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Titan+One&display=swap" rel="stylesheet" />
 
     <style>
-        :root {
+:root {
     --primary-color: #972772dc;
     --secondary-color: #000000;
     --lilac-bright: #e0b0ff;
     --lilac-glow: rgba(224, 176, 255, 0.6);
     --kb-hero-bg: #010100;
-    --font-display: 'Titan One', cursive;
-    --transition-base: 0.3s ease;
 }
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font-family: 'Open Sans', sans-serif; background-color: #0c0c0c; color: #333; overflow-x: hidden; }
+      body { font-family: 'Open Sans', sans-serif; background-color: #20002C; color: #333; overflow-x: hidden; }
 
       /* HEADER */
       .header-shell { position: sticky; top: 0; z-index: 1000; width: 100%; }
@@ -65,9 +63,14 @@
       .menu-flip-card__face {
         position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
         border-radius: 15px; padding: 20px; display: flex; flex-direction: column;
-        align-items: center; justify-content: center; border: 2px solid #0cd14dfd;
+        align-items: center; justify-content: center; border: 2px solid #FF00AA;
         box-shadow: 0 8px 20px rgba(94, 4, 53, 0.4);
-        background: linear-gradient(135deg, #220027 0%, #3d2242 50%, #480853b6 100%);
+        background:linear-gradient(
+135deg,
+#220027 0%,
+#3d2242 50%,
+#480853b6 100%
+);
         transition: box-shadow 0.3s ease, transform 0.3s ease;
       }
 
@@ -78,8 +81,8 @@
       .menu-flip-card__media { width: 100%; height: 180px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; filter: drop-shadow(0 8px 8px rgba(0,0,0,0.1)); }
       .menu-flip-card__media img { max-width: 100%; max-height: 100%; object-fit: contain; }
       
-      .menu-flip-card__name { font-family: var(--font-display); font-size: 16px; color: green; text-align: center; text-shadow: 1px 1px 0px #0a0a0a; }
-      .menu-flip-card__description { font-size: 12px; text-align: center; margin: 10px 0; color: #4b1d67; font-weight: 600; line-height: 1.4; }
+      .menu-flip-card__name { font-family: var(--font-display); font-size: 16px; color: #3B0A45; text-align: center; text-shadow: 1px 1px 0px #0a0a0a; }
+      .menu-flip-card__description { font-size: 12px; text-align: center; margin: 10px 0; color: #fff; font-weight: 600; line-height: 1.4; }
       .menu-flip-card__price { font-weight: 800; font-size: 15px; margin-bottom: 3px; color: #4b1d67; }
 
       .btn-order-now {
@@ -92,7 +95,7 @@
       /* MODAL DE PEDIDO */
       .order-modal {
         display: none; position: fixed; z-index: 100000; left: 0; top: 0; width: 100%; height: 100%;
-        background-color: rgba(0, 0, 0, 0.85); align-items: center; justify-content: center;
+        background-color: rgba(117, 2, 88, 0.979); align-items: center; justify-content: center;
         backdrop-filter: blur(8px); padding: 15px;
       }
       .order-modal.active { display: flex !important; }
@@ -383,7 +386,26 @@
         { name: "M&Ms original", price: 7.00 },
         { name: " Cobertura de Nutella", price: 8.00 },
          { name: " Recheio de Nutella", price: 12.00 },
-        { name: " Cobertura de Creme de Avelã", price: 4.50 }
+        { name: " Cobertura de Creme de Avelã", price: 5.00 },
+        { name: " Recheio de Creme de Avelã", price: 9.00 },
+        { name: " Cobertura de Creme Leitinho", price: 5.00 },
+        { name: " Recheio de Creme de Avelã", price: 9.00 },
+        { name: " Cobertura de Kinder Bueno", price: 5.00 },
+        { name: " Recheio de Kinder Bueno", price: 9.00 },
+{ name: "Cupuaçu", price: 0.00 },
+{ name: "Granola", price: 0.00 },
+{ name: "Jujubas", price: 1.00 },
+{ name: "Bala de Goma", price: 1.00 },
+{ name: "Calda Sabor Morango", price: 1.00 },
+{ name: "Calda sabor Chocolate", price: 4.50 },
+{ name: "Bis Preto 3 und", price: 2.50 },
+{ name: "Bis Branco 3 und", price: 2.50 },
+{ name: "Stikadinho 1 und", price: 2.50 },
+{ name: "Bombom Ouro Branco", price: 3.00 },
+{ name: "Sucrilhos Original", price: 1.00 },
+
+        
+   
       ];
 
       window.onload = function() {
