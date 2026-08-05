@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Açaí Sabor do Verão | Peça pelo Whats</title>
+    <title>Pé de Açaí | Peça pelo Whats</title>
     
     <!-- Meta Tags -->
     <meta name="description" content="O melhor açaí de Porto Alegre com leite moça, leite em pó, frutas e promoções exclusivas todos os dias. Peça agora pelo WhatsApp!">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Açaí Sabor do Verão 🍧">
+    <meta property="og:title" content=" Pé de Açaí 🍧">
     <meta property="og:description" content="Peça agora seu açaí favorito com leite moça, leite em pó e os melhores toppings!">
     <meta property="og:image" content="https://kraskin-websites.github.io/promo-aocomboduplo/preview/pacoca3.png">
     <meta name="theme-color" content="#4b1d67">
@@ -19,21 +19,21 @@
 
     <style>
 :root {
-    --primary-color: hsla(327, 91%, 45%, 0.863);
-    --secondary-color: #000000;
-    --lilac-bright: #e0b0ff;
-    --lilac-glow: rgba(224, 176, 255, 0.6);
-    --kb-hero-bg: #010100;
+    --primary-color: #eb11a2; /* Amarelo */
+    --secondary-color: #8A2BE2; /* Lilás */
+    --lilac-bright: #E0B0FF; /* Lilás claro */
+    --lilac-glow: rgba(224, 176, 255, 0.6); /* Lilás com brilho */
+    --kb-hero-bg: #FFFACD; /* Amarelo claro para fundo */
 }
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-image: url(./lilas.jpg); color: #333; overflow-x: hidden; }
+      body { font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-image: url(./FUNDO.jpg); color: #333; overflow-x: hidden; }
 
       /* HEADER */
       .header-shell { position: sticky; top: 0; z-index: 1000; width: 100%; }
-      .announcement-bar { background: #000; color: #fff; text-align: center; padding: 10px; font-size: 12px; font-weight: bold; }
+      .announcement-bar { background: var(--secondary-color); color: #fff; text-align: center; padding: 10px; font-size: 12px; font-weight: bold; }
       .main-navbar { background-image: url(./MORANGUINHO.png); color: #fff; padding: 10px 0;
-      box-shadow: 0px 4px 10px rgba(255, 0, 242, 0.5); }
+      box-shadow: 0px 4px 10px rgba(138, 43, 226, 0.5); }
       .navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
       
       .brand-container { display: flex; align-items: center; gap: 12px; }
@@ -64,48 +64,48 @@
       .menu-flip-card__face {
         position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
         border-radius: 15px; padding: 20px; display: flex; flex-direction: column;
-        align-items: center; justify-content: center; border: 2px solid #e910a1;
-        box-shadow: 0 8px 20px rgba(94, 4, 53, 0.4);
+        align-items: center; justify-content: center; border: 2px solid var(--secondary-color);
+        box-shadow: 0 8px 20px rgba(138, 43, 226, 0.4);
         background:linear-gradient(
 135deg,
-#220027 0%,
-#3d2242 50%,
-#480853b6 100%
+#330033 0%,
+#cbf532 50%,
+#660066b6 100%
 );
         transition: box-shadow 0.3s ease, transform 0.3s ease;
       }
 
       .menu-flip-card:hover .menu-flip-card__face { box-shadow: 0 0 20px var(--primary-color); }
-      .menu-flip-card__face--back { transform: rotateY(180deg); background: linear-gradient(135deg, #059fce 0%, #ec33bef5 100%); }
+      .menu-flip-card__face--back { transform: rotateY(180deg); background: linear-gradient(135deg, #FFD700 0%, #8A2BE2 100%); }
       
       /* Categoria CARDS */
       .menu-flip-card__media { width: 100%; height: 180px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; filter: drop-shadow(0 8px 8px rgba(0,0,0,0.1)); }
       .menu-flip-card__media img { max-width: 100%; max-height: 100%; object-fit: contain; }
       
-      .menu-flip-card__name { font-family: var(--font-display); font-size: 16px; color: #f0057a; text-align: center; text-shadow: 1px 1px 0px #070707; }
+      .menu-flip-card__name { font-family: var(--font-display); font-size: 16px; color: var(--primary-color); text-align: center; text-shadow: 1px 1px 0px #070707; }
       .menu-flip-card__description { font-size: 12px; text-align: center; margin: 10px 0; color: #fff; font-weight: 600; line-height: 1.4; }
-      .menu-flip-card__price { font-weight: 800; font-size: 15px; margin-bottom: 3px; color: #4b1d67; }
+      .menu-flip-card__price { font-weight: 800; font-size: 15px; margin-bottom: 3px; color: var(--secondary-color); }
 
       .btn-order-now {
-        background-color: var(--primary-color); color: #ffffff !important; border: none;
+        background-color: var(--primary-color); color: #000000 !important; border: none;
         padding: 10px; border-radius: 8px; font-weight: 800; font-size: 12px;
         cursor: pointer; margin-top: 10px; width: 100%; text-transform: uppercase;
-        box-shadow: 0 4px 10px rgba(75, 29, 103, 0.2);
+        box-shadow: 0 4px 10px rgba(138, 43, 226, 0.2);
       }
 
       /* MODAL DE PEDIDO */
       .order-modal {
         display: none; position: fixed; z-index: 100000; left: 0; top: 0; width: 100%; height: 100%;
-        background-color: rgba(117, 2, 88, 0.979); align-items: center; justify-content: center;
+        background-color: rgba(138, 43, 226, 0.979); align-items: center; justify-content: center;
         backdrop-filter: blur(8px); padding: 15px;
       }
       .order-modal.active { display: flex !important; }
       .order-modal__content {
-        background-color: #0db9e4a9; width: 100%; max-width: 450px; border-radius: 20px;
+        background-color: #FFD700a9; width: 100%; max-width: 450px; border-radius: 20px;
         position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden;
         max-height: 90vh; overflow-y: auto;
       }
-      .order-modal__header { background: var(--primary-color); color: #fff; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 10; }
+      .order-modal__header { background: var(--secondary-color); color: #fff; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 10; }
       .order-modal__title { font-family: var(--font-display); font-size: 18px; }
       .order-modal__close { position: absolute; right: 15px; top: 15px; color: #fff; font-size: 24px; cursor: pointer; }
       .order-modal__body { padding: 20px; }
@@ -116,20 +116,20 @@
       .order-modal__label { display: block; font-weight: 800; font-size: 11px; color: black; margin-bottom: 5px; text-transform: uppercase; }
       .order-modal__options { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
       .order-modal__option { flex: 1; min-width: 80px; border: 2px solid #eee; padding: 12px; border-radius: 10px; text-align: center; cursor: pointer; font-weight: 700; font-size: 14px; }
-      .order-modal__option.active { border-color: var(--primary-color); background: #f5ebff; color: var(--primary-color); }
+      .order-modal__option.active { border-color: var(--secondary-color); background: #f5ebff; color: var(--secondary-color); }
       
       .order-modal__input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 15px; font-size: 14px; }
-      .order-modal__input:focus { border-color: var(--primary-color); outline: none; }
+      .order-modal__input:focus { border-color: var(--secondary-color); outline: none; }
 
       .order-modal__summary { background: #f9f9f9; padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #eee; }
       .order-modal__summary-item { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
-      .order-modal__total { display: flex; justify-content: space-between; font-weight: 900; font-size: 18px; color: var(--primary-color); border-top: 1px solid #eee; padding-top: 8px; margin-top: 8px; }
+      .order-modal__total { display: flex; justify-content: space-between; font-weight: 900; font-size: 18px; color: var(--secondary-color); border-top: 1px solid #eee; padding-top: 8px; margin-top: 8px; }
       
       .order-modal__btn { width: 100%; border: none; padding: 16px; border-radius: 10px; font-size: 15px; font-weight: 800; cursor: pointer; text-transform: uppercase; display: block; text-align: center; text-decoration: none; }
-      .order-modal__btn--next { background: var(--primary-color); color: #fff; }
-      .order-modal__btn--send { background: var(--secondary-color); color: #fff; }
+      .order-modal__btn--next { background: var(--secondary-color); color: #fff; }
+      .order-modal__btn--send { background: var(--primary-color); color: #000; }
       .order-modal__btn--back { background: #eee; color: #666; margin-top: 10px; padding: 10px; font-size: 12px; }
-      .order-modal__btn--add { background: #6a1b9a; color: #fff; margin-bottom: 10px; }
+      .order-modal__btn--add { background: var(--secondary-color); color: #fff; margin-bottom: 10px; }
 
       /* COMPLEMENTOS */
       .complements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
@@ -137,14 +137,14 @@
       .complement-item input { cursor: pointer; width: 18px; height: 18px; }
 
       /* CARRINHO */
-      .cart-count-badge { background: #ff4444; color: #fff; border-radius: 50%; padding: 2px 6px; font-size: 10px; margin-left: 5px; }
+      .cart-count-badge { background: #FFD700; color: #000; border-radius: 50%; padding: 2px 6px; font-size: 10px; margin-left: 5px; }
       .cart-items { margin-bottom: 15px; border: 1px solid #eee; border-radius: 10px; overflow: hidden; }
       .cart-item { padding: 10px; border-bottom: 1px solid #eee; background: #fff; position: relative; }
       .cart-item:last-child { border-bottom: none; }
-      .cart-item__title { font-weight: 800; font-size: 14px; color: var(--primary-color); }
+      .cart-item__title { font-weight: 800; font-size: 14px; color: var(--secondary-color); }
       .cart-item__details { font-size: 12px; color: #666; }
       .cart-item__price { font-weight: 700; font-size: 13px; text-align: right; }
-      .cart-item__remove { position: absolute; right: 10px; top: 10px; color: #ff4444; cursor: pointer; font-weight: bold; }
+      .cart-item__remove { position: absolute; right: 10px; top: 10px; color: #FFD700; cursor: pointer; font-weight: bold; }
 
       /* FOOTER */
       .kb-footer { background: #111; padding: 40px 20px; text-align: center; color: #fff; }
@@ -161,6 +161,7 @@
         .brand-logo { height: 35px; }
       }
     </style>
+
   </head>
   <body>
    <header class="header-shell">
@@ -170,7 +171,7 @@
           <!-- LOGO SPACE ADDED HERE -->
           <div class="brand-container">
             <img src="./logo.jpg" alt="Logo Sabor do Verão" class="brand-logo" onerror="this.style.display='none'">
-            <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, 'Arial Narrow', Arial, sans-serif;" class="brand-name">Sabor do Verão o melhor da região </div>
+            <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, 'Arial Narrow', Arial, sans-serif;" class="brand-name">Pé de Açaí </div>
           </div>
           <div class="desktop-nav">
             <ul>
@@ -186,7 +187,7 @@
     <main class="page-content">
       <section class="menu-flip-section" id="nosso-menu">
         <div class="menu-flip-section__header">
-          <h2 class="menu-flip-section__title">Cardápio Sabor do Verão </h2>
+          <h2 class="menu-flip-section__title">Cardápio Pé de Açaí  </h2>
           <p style="font-weight: 800; color: #c4139d; letter-spacing: 2px;">Monte seu Açaí ou escolha seu Combo</p>
         </div>
 
@@ -221,7 +222,7 @@
                   <figure class="menu-flip-card__media">
                     <img src="./amendoim.jpg" alt="Monte seu Açaí" />
                   </figure>
-                  <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ</h3>
+                  <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAí POLPA NORTE</h3>
                 </div>
                 <div class="menu-flip-card__face menu-flip-card__face--back">
                   <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ</h3>
@@ -378,7 +379,7 @@
     </div>
 
     <footer class="kb-footer">
-      <div class="brand-name">SABOR DO VERÃO</div>
+      <div class="brand-name">PÉ DE AÇAÍ</div>
       <ul class="kb-footer__social">
         <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/moca.jpg" class="kb-footer__logo"></li>
         <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/nutella.png" class="kb-footer__logo"></li>
@@ -387,7 +388,7 @@
     </footer>
 
     <script>
-      const WHATSAPP_NUMBER = "5551997316095"; 
+      const WHATSAPP_NUMBER = "5551996568821"; 
       let cart = [];
       let currentItem = { 
         product: "", size: "", qty: 1, price: 0,
