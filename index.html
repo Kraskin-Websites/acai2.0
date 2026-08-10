@@ -807,23 +807,28 @@ html { scroll-behavior: smooth; }
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
     .desktop-nav { display: none; }
-        .menu-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; justify-items: stretch; }
-    .flip-card { height: 320px; }
-    .flip-card__media { height: 140px; }
+    .menu-section { padding: 1.5rem 0.7rem 4rem; }
+    /* GRID: 2 cards por linha no celular */
+    .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; justify-items: stretch; }
+    .flip-card { height: 360px; }
+    .flip-card__face { padding: 0.8rem; }
+    .flip-card__media { height: 130px; margin-bottom: 0.6rem; }
     .brand-name { font-size: 0.95rem; }
     .brand-logo { height: 40px; }
-    .hero { padding: 3rem 1rem 2rem; }
-    .hero h1 { font-size: 1.9rem; }
-    .flip-card__name { font-size: 0.9rem; }
-    .flip-card__price { font-size: 0.9rem; }
-    .btn-order-now { font-size: 0.72rem; padding: 0.65rem; }
-    .flip-card__description { font-size: 0.78rem; }
+    .hero { padding: 2.5rem 1rem 1.8rem; }
+    .hero h1 { font-size: 1.7rem; }
+    .flip-card__name { font-size: 0.82rem; margin-bottom: 0.4rem; }
+    .flip-card__description { font-size: 0.7rem; margin-bottom: 0.5rem; }
+    .flip-card__prices { padding: 0.45rem 0.6rem; margin-bottom: 0.55rem; }
+    .flip-card__price { font-size: 0.82rem; padding: 0.1rem 0; }
+    .flip-card__price .vol { font-size: 0.75rem; }
+    .btn-order-now { font-size: 0.68rem; padding: 0.55rem; }
     .navbar-container { padding: 0.6rem 0.9rem; }
 }
 
-@media (max-width: 400px) {
-        .menu-grid { grid-template-columns: 1fr; justify-items: stretch; }
-    .flip-card { height: 330px; }
+@media (max-width: 380px) {
+    .flip-card { height: 345px; }
+    .flip-card__media { height: 115px; }
 }
     </style>
   </head>
