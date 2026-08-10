@@ -253,593 +253,156 @@ html { scroll-behavior: smooth; }
             min-width: 0;
         }
 
-/* ===== FLIP CARDS ===== */
-        .flip-card { perspective: 1200px; width: 100%; height: 380px; cursor: pointer; }
-
-.flip-card__inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.flip-card:hover .flip-card__inner,
-.flip-card.is-flipped .flip-card__inner { transform: rotateY(180deg); }
-
-        .flip-card__face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 15px;
-            padding: 1.2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(145deg, #2d0a3e 0%, #4b1d67 60%, #6d1585 100%);
-            border: 2px solid rgba(240, 41, 179, 0.5);
-            box-shadow: 0 8px 20px rgba(94, 4, 53, 0.4);
-            transition: box-shadow 0.3s ease;
-            overflow: hidden;
-        }
-
-.flip-card__face::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #f029b3 0%, #ffb703 100%);
-}
-
-.flip-card:hover .flip-card__face { box-shadow: 0 0 30px rgba(216, 17, 153, 0.5); }
-
-        .flip-card__face--back {
-            transform: rotateY(180deg);
-            background: linear-gradient(145deg, #059fce 0%, #ec33be 100%);
-            border-color: rgba(0, 180, 216, 0.5);
-        }
-
-.flip-card__face--back::before {
-    background: linear-gradient(90deg, #00b4d8 0%, #7dd3fc 100%);
-}
-
-        .flip-card__media {
-            width: 100%;
-            height: 180px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
-            border-radius: 12px;
-            padding: 0.5rem;
-        }
-
-.flip-card__media img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.35));
-    transition: transform 0.3s ease;
-}
-
-.flip-card:hover .flip-card__media img { transform: scale(1.05); }
-
-        .flip-card__name {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .flip-card__description {
-            font-size: 0.82rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: 0.7rem;
-        }
-
-        .flip-card__prices {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.25);
-            border-radius: 10px;
-            padding: 0.6rem 0.9rem;
-            margin-bottom: 0.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .flip-card__price {
-            font-weight: 800;
-            font-size: 0.95rem;
-            color: var(--white);
-            display: flex;
-            justify-content: space-between;
-            padding: 0.12rem 0;
-        }
-
-        .flip-card__price .vol {
-            color: rgba(255, 255, 255, 0.65);
-            font-size: 0.82rem;
-        }
-
-        .btn-order-now {
-            background: linear-gradient(135deg, #f029b3 0%, #ff6bc4 100%);
-            color: var(--white) !important;
-            border: none;
-            padding: 0.7rem 1rem;
-            border-radius: 8px;
-            font-weight: 800;
-            font-size: 0.78rem;
-            cursor: pointer;
-            margin-top: auto;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 10px rgba(75, 29, 103, 0.2);
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-.btn-order-now:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(216, 17, 153, 0.7);
-}
-
-.btn-order-now:active { transform: translateY(0); }
-
-/* ===== MODAL DE PEDIDO ===== */
-.order-modal {
-    display: none;
-    position: fixed;
-    z-index: 100000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(15, 2, 24, 0.92);
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(8px);
-    padding: 1rem;
-}
-
-.order-modal.active { display: flex !important; }
-
-.order-modal__content {
-    background: var(--white);
-    width: 100%;
-    max-width: 460px;
-    border-radius: 24px;
-    position: relative;
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
-    overflow: hidden;
-    max-height: 92vh;
-    overflow-y: auto;
-    animation: modalIn 0.35s ease;
-}
-
-@keyframes modalIn {
-    from { opacity: 0; transform: translateY(30px) scale(0.96); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.order-modal__header {
-    background: linear-gradient(135deg, #4b1d67 0%, #7a1199 100%);
-    color: var(--white);
-    padding: 1.5rem 1.3rem;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.order-modal__title {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    line-height: 1.4;
-}
-
-.order-modal__close {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    color: var(--white);
-    font-size: 1.6rem;
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease;
-    border: none;
-    font-family: inherit;
-}
-
-.order-modal__close:hover { background: rgba(255, 255, 255, 0.3); }
-
-.order-modal__body { padding: 1.5rem; }
-
-.order-modal__step { display: none; }
-.order-modal__step.active { display: block; }
-
-.order-modal__label {
-    display: block;
-    font-weight: 800;
-    font-size: 0.72rem;
-    color: var(--primary-dark);
-    margin-bottom: 0.45rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.order-modal__options {
-    display: flex;
-    gap: 0.6rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-}
-
-.order-modal__option {
-    flex: 1;
-    min-width: 80px;
-    border: 2px solid #e5e7eb;
-    padding: 0.9rem 0.5rem;
-    border-radius: 12px;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--gray);
-    background: var(--white);
-    transition: all 0.25s ease;
-    font-family: inherit;
-}
-
-.order-modal__option:hover { border-color: var(--primary); }
-
-.order-modal__option.active {
-    border-color: var(--primary);
-    background: linear-gradient(135deg, #fdf0fa 0%, #fce0f4 100%);
-    color: var(--primary);
-    box-shadow: 0 4px 12px rgba(216, 17, 153, 0.2);
-}
-
-.order-modal__input {
-    width: 100%;
-    padding: 0.9rem 1rem;
-    border-radius: 12px;
-    border: 2px solid #e5e7eb;
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
-    background: var(--white);
-}
-
-.order-modal__input:focus {
-    border-color: var(--primary);
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(216, 17, 153, 0.12);
-}
-
-.order-modal__summary {
-    background: linear-gradient(135deg, #fdf0fa 0%, #f8e9fd 100%);
-    padding: 1rem 1.2rem;
-    border-radius: 14px;
-    margin-bottom: 1rem;
-    border: 1px solid rgba(216, 17, 153, 0.15);
-}
-
-.order-modal__summary-item {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    margin-bottom: 0.4rem;
-    color: var(--dark-2);
-}
-
-.order-modal__total {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 900;
-    font-size: 1.15rem;
-    color: var(--primary);
-    border-top: 1px solid rgba(216, 17, 153, 0.2);
-    padding-top: 0.6rem;
-    margin-top: 0.6rem;
-}
-
-.order-modal__btn {
-    width: 100%;
-    border: none;
-    padding: 1rem;
-    border-radius: 12px;
-    font-size: 0.95rem;
-    font-weight: 800;
-    cursor: pointer;
-    text-transform: uppercase;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    font-family: inherit;
-}
-
-.order-modal__btn--next {
-    background: linear-gradient(135deg, #f029b3 0%, #ff6bc4 100%);
-    color: var(--white);
-    box-shadow: 0 6px 20px rgba(216, 17, 153, 0.4);
-}
-
-.order-modal__btn--next:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(216, 17, 153, 0.6); }
-
-.order-modal__btn--send {
-    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-    color: var(--white);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-}
-
-.order-modal__btn--send:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6); }
-
-.order-modal__btn--back {
-    background: #f3f4f6;
-    color: var(--gray);
-    margin-top: 0.7rem;
-    padding: 0.8rem;
-    font-size: 0.8rem;
-}
-
-.order-modal__btn--back:hover { background: #e5e7eb; }
-
-.order-modal__btn--add {
-    background: linear-gradient(135deg, #4b1d67 0%, #7a1199 100%);
-    color: var(--white);
-    margin-bottom: 0.7rem;
-    box-shadow: 0 6px 20px rgba(75, 29, 103, 0.4);
-}
-
-.order-modal__btn--add:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(75, 29, 103, 0.6); }
-
-.order-modal__qty-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    border: none;
-    background: linear-gradient(135deg, #f029b3 0%, #ff6bc4 100%);
-    color: var(--white);
-    cursor: pointer;
-    font-size: 1.3rem;
-    font-weight: 700;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(216, 17, 153, 0.35);
-    font-family: inherit;
-}
-
-.order-modal__qty-btn:hover { transform: scale(1.08); }
-
-.qty-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.2rem;
-    margin-bottom: 1rem;
-    background: #f3f4f6;
-    padding: 0.6rem;
-    border-radius: 30px;
-}
-
-.qty-value { font-size: 1.4rem; font-weight: 800; min-width: 30px; text-align: center; color: var(--primary-dark); }
-
-/* ===== COMPLEMENTOS ===== */
-.complements-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.6rem;
-    margin-bottom: 1rem;
-    max-height: 260px;
-    overflow-y: auto;
-    padding-right: 4px;
-}
-
-.complements-grid::-webkit-scrollbar { width: 5px; }
-.complements-grid::-webkit-scrollbar-thumb { background: rgba(216, 17, 153, 0.3); border-radius: 10px; }
-
-.complement-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    background: #f9fafb;
-    padding: 0.6rem 0.5rem;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    transition: all 0.2s ease;
-    color: var(--dark-2);
-}
-
-.complement-item:hover { border-color: var(--primary); background: #fdf0fa; }
-
-.complement-item input { cursor: pointer; width: 16px; height: 16px; accent-color: var(--primary); }
-
-/* ===== CARRINHO ===== */
-.cart-count-badge {
-    background: #ef4444;
-    color: var(--white);
-    border-radius: 50%;
-    padding: 2px 7px;
-    font-size: 0.7rem;
-    margin-left: 4px;
-    font-weight: 800;
-}
-
-.cart-items {
-    margin-bottom: 1rem;
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
-    overflow: hidden;
-    background: #f9fafb;
-}
-
-.cart-item {
-    padding: 0.9rem 1rem;
-    border-bottom: 1px solid #e5e7eb;
-    background: var(--white);
-    position: relative;
-    padding-right: 2.5rem;
-}
-
-.cart-item:last-child { border-bottom: none; }
-
-.cart-item__title {
-    font-weight: 800;
-    font-size: 0.9rem;
-    color: var(--primary);
-    margin-bottom: 0.2rem;
-}
-
-.cart-item__details { font-size: 0.78rem; color: var(--gray); line-height: 1.4; }
-
-.cart-item__price {
-    font-weight: 800;
-    font-size: 0.9rem;
-    text-align: right;
-    color: var(--primary-dark);
-    margin-top: 0.3rem;
-}
-
-.cart-item__remove {
-    position: absolute;
-    right: 0.7rem;
-    top: 0.7rem;
-    color: #ef4444;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.2rem;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: #fef2f2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.cart-item__remove:hover { background: #fee2e2; transform: scale(1.1); }
-
-/* ===== FOOTER ===== */
-.kb-footer {
-    background: #0a0112;
-    padding: 3rem 1.5rem 1.5rem;
-    text-align: center;
-    color: var(--white);
-    border-top: 1px solid rgba(240, 41, 179, 0.2);
-}
-
-.kb-footer .brand-name { font-size: 1.3rem; margin-bottom: 0.5rem; }
-
-.kb-footer__subtitle {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.85rem;
-    margin-bottom: 1.5rem;
-}
-
-.kb-footer__social { display: flex; justify-content: center; gap: 0.8rem; list-style: none; margin-top: 1rem; flex-wrap: wrap; }
-
-.kb-footer__logo {
-    width: 48px;
-    height: 48px;
-    background: var(--white);
-    padding: 5px;
-    border-radius: 12px;
-    object-fit: contain;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-}
-
-.kb-footer__logo:hover { transform: translateY(-3px); }
-
-.kb-footer__bottom {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-/* ===== WHATSAPP FLOAT ===== */
-.whatsapp-float {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 56px;
-    height: 56px;
-    background: #25d366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1.6rem;
-    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.45);
-    transition: all 0.3s ease;
-    z-index: 999;
-}
-
-.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6); }
-
-/* ===== RESPONSIVO ===== */
-@media (max-width: 768px) {
-    .desktop-nav { display: none; }
-    .menu-section { padding: 1.5rem 0.7rem 4rem; }
-    /* GRID: 2 cards por linha no celular */
-    .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; justify-items: stretch; }
-    .flip-card { height: 360px; }
-    .flip-card__face { padding: 0.8rem; }
-    .flip-card__media { height: 130px; margin-bottom: 0.6rem; }
-    .brand-name { font-size: 0.95rem; }
-    .brand-logo { height: 40px; }
-    .hero { padding: 2.5rem 1rem 1.8rem; }
-    .hero h1 { font-size: 1.7rem; }
-    .flip-card__name { font-size: 0.82rem; margin-bottom: 0.4rem; }
-    .flip-card__description { font-size: 0.7rem; margin-bottom: 0.5rem; }
-    .flip-card__prices { padding: 0.45rem 0.6rem; margin-bottom: 0.55rem; }
-    .flip-card__price { font-size: 0.82rem; padding: 0.1rem 0; }
-    .flip-card__price .vol { font-size: 0.75rem; }
-    .btn-order-now { font-size: 0.68rem; padding: 0.55rem; }
-    .navbar-container { padding: 0.6rem 0.9rem; }
-}
-
-@media (max-width: 380px) {
-    .flip-card { height: 345px; }
-    .flip-card__media { height: 115px; }
-}
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-image: url(./lilas.jpg); color: #333; overflow-x: hidden; }
+
+      /* HEADER */
+      .header-shell { position: sticky; top: 0; z-index: 1000; width: 100%; }
+      .announcement-bar { background: #000; color: #fff; text-align: center; padding: 10px; font-size: 12px; font-weight: bold; }
+      .main-navbar { background-image: url(./MORANGUINHO.png); color: #fff; padding: 10px 0;
+      box-shadow: 0px 4px 10px rgba(255, 0, 242, 0.5); }
+      .navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+      
+      .brand-container { display: flex; align-items: center; gap: 12px; }
+      .brand-logo { height: 45px; width: auto; border-radius: 10px; }
+      .brand-name { font-family: g; font-size: 22px; line-height: 1; }
+      
+      .desktop-nav ul { display: flex; list-style: none; gap: 20px; }
+      .desktop-nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 13px; text-transform: uppercase; }
+
+      /* MENU FLIP SECTION */
+      .menu-flip-section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+      .menu-flip-section__header { text-align: center; margin-bottom: 30px; }
+      .menu-flip-section__title { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--primary-color); }
+      
+      /* MINI CARDS GRID ADJUSTMENT */
+      .menu-flip-section__grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+        gap: 20px; 
+        list-style: none; 
+      }
+
+      /* MINI CARD FLIP LOGIC */
+      .menu-flip-card { perspective: 1000px; height: 380px; cursor: pointer; }
+      .menu-flip-card__inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
+      .menu-flip-card:hover .menu-flip-card__inner, .menu-flip-card.is-flipped .menu-flip-card__inner { transform: rotateY(180deg); }
+      
+      .menu-flip-card__face {
+        position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+        border-radius: 15px; padding: 20px; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; border: 2px solid #e910a1;
+        box-shadow: 0 8px 20px rgba(94, 4, 53, 0.4);
+        background:linear-gradient(
+135deg,
+#220027 20%,
+#79607c 50%,
+#530846 100%
+);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+      }
+
+      .menu-flip-card:hover .menu-flip-card__face { box-shadow: 0 0 20px var(--primary-color); }
+      .menu-flip-card__face--back { transform: rotateY(180deg); background: linear-gradient(135deg, #059fce 0%, #ec33bef5 100%); }
+      
+      /* Categoria CARDS */
+      .menu-flip-card__media { width: 100%; height: 180px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; filter: drop-shadow(0 8px 8px rgba(0,0,0,0.1)); }
+      .menu-flip-card__media img { max-width: 100%; max-height: 100%; object-fit: contain; }
+      
+      .menu-flip-card__name { font-family: var(--font-display); font-size: 16px; color: #f0057a; text-align: center; text-shadow: 1px 1px 0px #070707; }
+      .menu-flip-card__description { font-size: 12px; text-align: center; margin: 10px 0; color: #fff; font-weight: 600; line-height: 1.4; }
+      .menu-flip-card__price { font-weight: 800; font-size: 15px; margin-bottom: 3px; color: #4b1d67; }
+
+      .btn-order-now {
+        background-color: var(--primary-color); color: #ffffff !important; border: none;
+        padding: 10px; border-radius: 8px; font-weight: 800; font-size: 12px;
+        cursor: pointer; margin-top: 10px; width: 100%; text-transform: uppercase;
+        box-shadow: 0 4px 10px rgba(75, 29, 103, 0.2);
+      }
+
+      /* MODAL DE PEDIDO */
+      .order-modal {
+        display: none; position: fixed; z-index: 100000; left: 0; top: 0; width: 100%; height: 100%;
+        background-color: rgba(117, 2, 88, 0.979); align-items: center; justify-content: center;
+        backdrop-filter: blur(8px); padding: 15px;
+      }
+      .order-modal.active { display: flex !important; }
+      .order-modal__content {
+        background-color: #0db9e4a9; width: 100%; max-width: 450px; border-radius: 20px;
+        position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden;
+        max-height: 90vh; overflow-y: auto;
+      }
+      .order-modal__header { background: var(--primary-color); color: #fff; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 10; }
+      .order-modal__title { font-family: var(--font-display); font-size: 18px; }
+      .order-modal__close { position: absolute; right: 15px; top: 15px; color: #fff; font-size: 24px; cursor: pointer; }
+      .order-modal__body { padding: 20px; }
+      
+      .order-modal__step { display: none; }
+      .order-modal__step.active { display: block; }
+
+      .order-modal__label { display: block; font-weight: 800; font-size: 11px; color: black; margin-bottom: 5px; text-transform: uppercase; }
+      .order-modal__options { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+      .order-modal__option { flex: 1; min-width: 80px; border: 2px solid #eee; padding: 12px; border-radius: 10px; text-align: center; cursor: pointer; font-weight: 700; font-size: 14px; }
+      .order-modal__option.active { border-color: var(--primary-color); background: #f5ebff; color: var(--primary-color); }
+      
+      .order-modal__input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 15px; font-size: 14px; }
+      .order-modal__input:focus { border-color: var(--primary-color); outline: none; }
+
+      .order-modal__summary { background: #f9f9f9; padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #eee; }
+      .order-modal__summary-item { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+      .order-modal__total { display: flex; justify-content: space-between; font-weight: 900; font-size: 18px; color: var(--primary-color); border-top: 1px solid #eee; padding-top: 8px; margin-top: 8px; }
+      
+      .order-modal__btn { width: 100%; border: none; padding: 16px; border-radius: 10px; font-size: 15px; font-weight: 800; cursor: pointer; text-transform: uppercase; display: block; text-align: center; text-decoration: none; }
+      .order-modal__btn--next { background: var(--primary-color); color: #fff; }
+      .order-modal__btn--send { background: var(--secondary-color); color: #fff; }
+      .order-modal__btn--back { background: #eee; color: #666; margin-top: 10px; padding: 10px; font-size: 12px; }
+      .order-modal__btn--add { background: #6a1b9a; color: #fff; margin-bottom: 10px; }
+
+      /* COMPLEMENTOS */
+      .complements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+      .complement-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; cursor: pointer; background: #f9f9f9; padding: 8px; border-radius: 8px; border: 1px solid #eee; }
+      .complement-item input { cursor: pointer; width: 18px; height: 18px; }
+
+      /* CARRINHO */
+      .cart-count-badge { background: #ff4444; color: #fff; border-radius: 50%; padding: 2px 6px; font-size: 10px; margin-left: 5px; }
+      .cart-items { margin-bottom: 15px; border: 1px solid #eee; border-radius: 10px; overflow: hidden; }
+      .cart-item { padding: 10px; border-bottom: 1px solid #eee; background: #fff; position: relative; }
+      .cart-item:last-child { border-bottom: none; }
+      .cart-item__title { font-weight: 800; font-size: 14px; color: var(--primary-color); }
+      .cart-item__details { font-size: 12px; color: #666; }
+      .cart-item__price { font-weight: 700; font-size: 13px; text-align: right; }
+      .cart-item__remove { position: absolute; right: 10px; top: 10px; color: #ff4444; cursor: pointer; font-weight: bold; }
+
+      /* FOOTER */
+      .kb-footer { background: #111; padding: 40px 20px; text-align: center; color: #fff; }
+      .kb-footer__social { display: flex; justify-content: center; gap: 10px; list-style: none; margin-top: 20px; }
+      .kb-footer__logo { width: 45px; height: 45px; background: #fff; padding: 5px; border-radius: 8px; }
+
+      @media (max-width: 768px) {
+        .desktop-nav { display: none; }
+        .menu-flip-section__title { font-size: 1.8rem; }
+        .menu-flip-section__grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
+        .menu-flip-card { height: 320px; }
+        .menu-flip-card__media { height: 140px; }
+        .brand-name { font-size: 18px; }
+        .brand-logo { height: 35px; }
+      }
     </style>
   </head>
   <body>
    <header class="header-shell">
-      <div class="announcement-bar">⚠️ ATENÇÃO! SEMPRE SALVE SEU COPO ANTES DE ADICIONAR OUTROS OU FINALIZAR.</div>
+      <div class="announcement-bar">ATENÇÃO! SEMPRE SALVE SEU COPO ANTES DE ADICIONAR OUTROS OU FINALIZAR.</div>
       <nav class="main-navbar">
         <div class="navbar-container">
+          <!-- LOGO SPACE ADDED HERE -->
           <div class="brand-container">
             <img src="./logo.jpg" alt="Logo Sabor do Verão" class="brand-logo" onerror="this.style.display='none'">
-            <div class="brand-name">SABOR DO <span>VERÃO</span></div>
+            <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, 'Arial Narrow', Arial, sans-serif;" class="brand-name">Sabor do Verão o melhor da região </div>
           </div>
           <div class="desktop-nav">
             <ul>
@@ -852,63 +415,60 @@ html { scroll-behavior: smooth; }
       </nav>
     </header>
 
-    <!-- Hero -->
+     <!-- Hero -->
     <section class="hero">
       <div class="hero-badge">🍧 O MELHOR AÇAÍ DE PORTO ALEGRE</div>
       <h1>Escolha seu <span class="grad">Açaí Favorito</span> e peça pelo WhatsApp</h1>
       <p>Monte seu açaí do seu jeito ou escolha nossos combos especiais com leite moça, leite em pó, frutas e muito mais!</p>
     </section>
 
+
     <main class="page-content">
-      <section class="menu-section" id="nosso-menu">
-        <div class="section-header">
-          <h2>Nosso <span class="grad">Cardápio</span></h2>
-          <p>Monte seu Açaí ou escolha seu Combo</p>
+      <section class="menu-flip-section" id="nosso-menu">
+        <div class="menu-flip-section__header">
+          <h2 class="menu-flip-section__title">Cardápio Sabor do Verão </h2>
+          <p style="font-weight: 800; color: #c4139d; letter-spacing: 2px;">Monte seu Açaí ou escolha seu Combo</p>
         </div>
 
-        <ul class="menu-grid">
-          <!-- MONTE SEU AÇAÍ ORIGEM -->
-          <li class="menu-item">
-            <article class="flip-card" id="card-monte-origem">
-              <div class="flip-card__inner">
-                <div class="flip-card__face flip-card__face--front">
-                  <figure class="flip-card__media">
-                    <img src="./amendoim.jpg" alt="Monte seu Açaí Origem" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/paçoca3.png'" />
+        <ul class="menu-flip-section__grid">
+          <!-- NOVO PRODUTO: MONTE SEU AÇAÍ ORIGEM -->
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card-monte-origem">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
+                    <img src="./amendoim.jpg" alt="Monte seu Açaí Origem" />
                   </figure>
-                  <h3 class="flip-card__name">🍧 MONTE SEU AÇAÍ ORIGEM</h3>
+                  <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ ORIGEM</h3>
                 </div>
-                <div class="flip-card__face flip-card__face--back">
-                  <h3 class="flip-card__name">🍧 MONTE SEU AÇAÍ ORIGEM</h3>
-                  <p class="flip-card__description">Monte do seu jeito Origem! Escolha o tamanho e adicione seus complementos favoritos.</p>
-                  <div class="flip-card__prices">
-                    <p class="flip-card__price"><span class="vol">300ml</span><span>R$ 21,00</span></p>
-                    <p class="flip-card__price"><span class="vol">500ml</span><span>R$ 28,50</span></p>
-                    <p class="flip-card__price"><span class="vol">700ml</span><span>R$ 34,90</span></p>
-                  </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ ORIGEM</h3>
+                  <p class="menu-flip-card__description">Monte do seu jeito Origem! Escolha o tamanho e adicione seus complementos favoritos.</p>
+                  <p class="menu-flip-card__price">300ml R$ 21,00</p>
+                  <p class="menu-flip-card__price">500ml R$ 28,50</p>
+                  <p class="menu-flip-card__price">700ml R$ 34,90</p>
                   <button class="btn-order-now" onclick="openMonteSeuAcaiOrigem()">Quero este - Pedir Agora</button>
                 </div>
               </div>
             </article>
           </li>
 
-          <!-- MONTE SEU AÇAÍ TRADICIONAL -->
-          <li class="menu-item">
-            <article class="flip-card" id="card-monte">
-              <div class="flip-card__inner">
-                <div class="flip-card__face flip-card__face--front">
-                  <figure class="flip-card__media">
-                    <img src="./amendoim.jpg" alt="Monte seu Açaí" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/Taças de açaí cremoso e delicado.png'" />
+          <!-- PRODUTO: MONTE SEU AÇAÍ TRADICIONAL -->
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card-monte">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
+                    <img src="./amendoim.jpg" alt="Monte seu Açaí" />
                   </figure>
-                  <h3 class="flip-card__name">🍧 MONTE SEU AÇAÍ</h3>
+                  <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ</h3>
                 </div>
-                <div class="flip-card__face flip-card__face--back">
-                  <h3 class="flip-card__name">🍧 MONTE SEU AÇAÍ</h3>
-                  <p class="flip-card__description">Monte do seu jeito! Escolha o tamanho e adicione seus complementos favoritos.</p>
-                  <div class="flip-card__prices">
-                    <p class="flip-card__price"><span class="vol">300ml</span><span>R$ 25,00</span></p>
-                    <p class="flip-card__price"><span class="vol">500ml</span><span>R$ 32,50</span></p>
-                    <p class="flip-card__price"><span class="vol">700ml</span><span>R$ 36,90</span></p>
-                  </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ</h3>
+                  <p class="menu-flip-card__description">Monte do seu jeito! Escolha o tamanho e adicione seus complementos favoritos.</p>
+                  <p class="menu-flip-card__price">300ml R$ 25,00</p>
+                  <p class="menu-flip-card__price">500ml R$ 32,50</p>
+                  <p class="menu-flip-card__price">700ml R$ 36,90</p>
                   <button class="btn-order-now" onclick="openMonteSeuAcai()">Quero este - Pedir Agora</button>
                 </div>
               </div>
@@ -916,22 +476,20 @@ html { scroll-behavior: smooth; }
           </li>
 
           <!-- CARD 1 -->
-          <li class="menu-item">
-            <article class="flip-card" id="card1">
-              <div class="flip-card__inner">
-                <div class="flip-card__face flip-card__face--front">
-                  <figure class="flip-card__media">
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card1">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
                     <img src="./paçoca3.png" alt="Combo Duplo de Paçoca" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/paçoca3.png'" />
                   </figure>
-                  <h3 class="flip-card__name">COMBO DUPLO DE PAÇOCA</h3>
+                  <h3 class="menu-flip-card__name">COMBO DUPLO DE PAÇOCA</h3>
                 </div>
-                <div class="flip-card__face flip-card__face--back">
-                  <h3 class="flip-card__name">COMBO DUPLO DE PAÇOCA</h3>
-                  <p class="flip-card__description">Dois deliciosos copos de Açaí de 330ml com leite Moça, leite em pó e paçoca.</p>
-                  <div class="flip-card__prices">
-                    <p class="flip-card__price"><span class="vol">330ml</span><span>R$ 36,00</span></p>
-                    <p class="flip-card__price"><span class="vol">500ml</span><span>R$ 56,00</span></p>
-                  </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">COMBO DUPLO DE PAÇOCA</h3>
+                  <p class="menu-flip-card__description">Dois deliciosos copos de Açaí de 330ml com leite Moça, leite em pó e paçoca.</p>
+                  <p class="menu-flip-card__price">330ml R$ 36,00</p>
+                  <p class="menu-flip-card__price">500ml R$ 56,00</p>
                   <button class="btn-order-now" onclick="openOrderModal('Combo Duplo de Paçoca', 36.00, 56.00)">Quero este - Pedir Agora</button>
                 </div>
               </div>
@@ -939,22 +497,20 @@ html { scroll-behavior: smooth; }
           </li>
 
           <!-- CARD 2 -->
-          <li class="menu-item">
-            <article class="flip-card" id="card2">
-              <div class="flip-card__inner">
-                <div class="flip-card__face flip-card__face--front">
-                  <figure class="flip-card__media">
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card2">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
                     <img src="./Taças de açaí cremoso e delicado.png" alt="Combo Duplo Leite Moça" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/Taças de açaí cremoso e delicado.png'" />
                   </figure>
-                  <h3 class="flip-card__name">COMBO DUPLO LEITE MOÇA + LEITE EM PÓ</h3>
+                  <h3 class="menu-flip-card__name">COMBO DUPLO LEITE MOÇA + LEITE EM PÓ</h3>
                 </div>
-                <div class="flip-card__face flip-card__face--back">
-                  <h3 class="flip-card__name">COMBO LEITE MOÇA + LEITE EM PÓ</h3>
-                  <p class="flip-card__description">Dois deliciosos copos de Açaí de 330ML com leite Moça e leite em pó.</p>
-                  <div class="flip-card__prices">
-                    <p class="flip-card__price"><span class="vol">330ml</span><span>R$ 29,99</span></p>
-                    <p class="flip-card__price"><span class="vol">500ml</span><span>R$ 55,00</span></p>
-                  </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">Combo leite moça leite em pó</h3>
+                  <p class="menu-flip-card__description">Dois deliciosos copos de Açaí de 330ML com leite Moça e leite em pó.</p>
+                  <p class="menu-flip-card__price">330ml R$ 29,99</p>
+                  <p class="menu-flip-card__price">500ml R$ 55,00</p>
                   <button class="btn-order-now" onclick="openOrderModal('Combo Duplo Leite Moça + Leite em Pó', 29.99, 55.00)">Quero este - Pedir Agora</button>
                 </div>
               </div>
@@ -962,22 +518,20 @@ html { scroll-behavior: smooth; }
           </li>
 
           <!-- CARD 3 -->
-          <li class="menu-item">
-            <article class="flip-card" id="card3">
-              <div class="flip-card__inner">
-                <div class="flip-card__face flip-card__face--front">
-                  <figure class="flip-card__media">
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card3">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
                     <img src="./pessego3.png" alt="Combo Duplo de Frutas" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/pessego3.png'" />
                   </figure>
-                  <h3 class="flip-card__name">COMBO DUPLO DE FRUTAS</h3>
+                  <h3 class="menu-flip-card__name">COMBO DUPLO DE FRUTAS</h3>
                 </div>
-                <div class="flip-card__face flip-card__face--back">
-                  <h3 class="flip-card__name">COMBO DUPLO DE FRUTAS</h3>
-                  <p class="flip-card__description">Dois deliciosos copos de Açaí de 330ML com leite Moça, leite em pó podendo escolher uma fruta.</p>
-                  <div class="flip-card__prices">
-                    <p class="flip-card__price"><span class="vol">330ml</span><span>R$ 36,00</span></p>
-                    <p class="flip-card__price"><span class="vol">500ml</span><span>R$ 56,00</span></p>
-                  </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">COMBO DUPLO DE FRUTAS</h3>
+                  <p class="menu-flip-card__description">Dois deliciosos copos de Açaí de 330ML com leite Moça, leite em pó podendo escolher uma fruta.</p>
+                  <p class="menu-flip-card__price">330ml R$ 36,00</p>
+                  <p class="menu-flip-card__price">500ml R$ 56,00</p>
                   <button class="btn-order-now" onclick="openOrderModal('Combo Duplo de Frutas', 36.00, 56.00)">Quero este - Pedir Agora</button>
                 </div>
               </div>
@@ -992,14 +546,14 @@ html { scroll-behavior: smooth; }
       <div class="order-modal__content">
         <div class="order-modal__header">
           <h3 class="order-modal__title">Escolha o copo e complementos, salve e adicione o próximo se desejado.</h3>
-          <button class="order-modal__close" onclick="closeOrderModal()">&times;</button>
+          <span class="order-modal__close" onclick="closeOrderModal()">&times;</span>
         </div>
         
         <div class="order-modal__body">
           <!-- PASSO 1: PRODUTO -->
           <div id="step1" class="order-modal__step active">
             <span class="order-modal__label">Produto</span>
-            <div id="modalProductName" style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #4b1d67;"></div>
+            <div id="modalProductName" style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #fff;"></div>
             
             <span class="order-modal__label">Tamanho</span>
             <div id="modalSizeOptions" class="order-modal__options"></div>
@@ -1010,10 +564,10 @@ html { scroll-behavior: smooth; }
             </div>
 
             <span class="order-modal__label">Quantidade</span>
-            <div class="qty-wrapper">
-              <button class="order-modal__qty-btn" onclick="updateQty(-1)">−</button>
-              <span id="modalQty" class="qty-value">1</span>
-              <button class="order-modal__qty-btn" onclick="updateQty(1)">+</button>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
+              <button class="order-modal__qty-btn" style="width: 35px; height: 35px; border-radius: 50%; border: none; background: var(--primary-color); color: #fff; cursor: pointer;" onclick="updateQty(-1)">-</button>
+              <span id="modalQty" style="font-size: 20px; font-weight: 800;">1</span>
+              <button class="order-modal__qty-btn" style="width: 35px; height: 35px; border-radius: 50%; border: none; background: var(--primary-color); color: #fff; cursor: pointer;" onclick="updateQty(1)">+</button>
             </div>
 
             <div class="order-modal__summary">
@@ -1055,7 +609,7 @@ html { scroll-behavior: smooth; }
             <span class="order-modal__label">Complemento</span>
             <input type="text" id="custComp" class="order-modal__input" placeholder="Apto, Bloco, Referência">
 
-            <a id="waFinalLink" href="javascript:void(0)" class="order-modal__btn order-modal__btn--send" onclick="handleOrderSubmit(event)">📱 Enviar Pedido pelo WhatsApp</a>
+            <a id="waFinalLink" href="javascript:void(0)" class="order-modal__btn order-modal__btn--send" onclick="handleOrderSubmit(event)">Enviar Pedido pelo WhatsApp</a>
             
             <button class="order-modal__btn order-modal__btn--back" onclick="goToStep(1)">+ Adicionar mais itens</button>
           </div>
@@ -1065,17 +619,12 @@ html { scroll-behavior: smooth; }
 
     <footer class="kb-footer">
       <div class="brand-name">SABOR DO VERÃO</div>
-      <p class="kb-footer__subtitle">O melhor da região 💜</p>
       <ul class="kb-footer__social">
-        <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/moca.jpg" class="kb-footer__logo" alt="Leite Moça"></li>
-        <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/nutella.png" class="kb-footer__logo" alt="Nutella"></li>
-        <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/elege.png" class="kb-footer__logo" alt="Elege"></li>
+        <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/moca.jpg" class="kb-footer__logo"></li>
+        <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/nutella.png" class="kb-footer__logo"></li>
+        <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/elege.png" class="kb-footer__logo"></li>
       </ul>
-      <p class="kb-footer__bottom">&copy; 2026 Açaí Sabor do Verão. Todos os direitos reservados.</p>
     </footer>
-
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/5551997316095" class="whatsapp-float" target="_blank" title="Fale conosco">💬</a>
 
     <script>
       const WHATSAPP_NUMBER = "5551997316095"; 
@@ -1213,6 +762,7 @@ html { scroll-behavior: smooth; }
         cart.push({...currentItem, complements: [...currentItem.complements]});
         updateCartUI();
         
+        // Reset Visual para o próximo item
         currentItem.qty = 1;
         currentItem.complements = [];
         document.querySelectorAll('#complementsGrid input').forEach(c => c.checked = false);
