@@ -418,6 +418,8 @@ html { scroll-behavior: smooth; }
       /* COMPLEMENTOS */
       .complements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
       .complement-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; cursor: pointer; background: #f9f9f9; padding: 8px; border-radius: 8px; border: 1px solid #eee; }
+      .complement-item__image { flex: 0 0 56px; width: 56px; height: 56px; border: 1px dashed #cfcfcf; border-radius: 8px; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+      .complement-item__image img { width: 100%; height: 100%; object-fit: cover; }
       .complement-item input { cursor: pointer; width: 18px; height: 18px; }
 
       /* CARRINHO */
@@ -517,7 +519,7 @@ html { scroll-behavior: smooth; }
                   <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ POLPA NORTE</h3>
                 </div>
                 <div class="menu-flip-card__face menu-flip-card__face--back">
-                  <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ POLPA NORTE </h3>
+                  <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ </h3>
                   <p class="menu-flip-card__description">Monte do seu jeito! Escolha o tamanho e adicione seus complementos favoritos.</p>
                   <p class="menu-flip-card__price">300ml R$ 25,00</p>
                   <p class="menu-flip-card__price">500ml R$ 32,50</p>
@@ -689,35 +691,35 @@ html { scroll-behavior: smooth; }
       };
 
       const ALL_COMPLEMENTS = [
-        { name: "Abacaxi", price: 1.00 },
-        { name: "Banana", price: 0.00 },
-        { name: "Manga", price: 1.00 },
-        { name: "Morango", price: 5.00 },
-        { name: "Pêssego em calda", price: 3.00 },
-        { name: "Leite Condensado", price: 0.00 },
-        { name: "Leite em pó", price: 0.00 },
-        { name: "Paçoca", price: 0.00 },
-        { name: "Chocoball", price: 2.00 },
-        { name: "M&Ms original", price: 7.00 },
-        { name: " Cobertura de Nutella", price: 8.00 },
-        { name: " Recheio de Nutella", price: 12.00 },
-        { name: " Cobertura de Creme de Avelã", price: 5.00 },
-        { name: " Recheio de Creme de Avelã", price: 9.00 },
-        { name: " Cobertura de Creme Leitinho", price: 5.00 },
-        { name: " Recheio de Creme de leitinho", price: 9.00 },
-        { name: " Cobertura de Kinder Bueno", price: 5.00 },
-        { name: " Recheio de Kinder Bueno", price: 9.00 },
-        { name: "Cupuaçu", price: 0.00 },
-        { name: "Granola", price: 0.00 },
-        { name: "Jujubas", price: 1.00 },
-        { name: "Bala de Goma", price: 1.00 },
-        { name: "Calda Sabor Morango", price: 1.00 },
-        { name: "Calda sabor Chocolate", price: 4.50 },
-        { name: "Bis Preto 3 und", price: 2.50 },
-        { name: "Bis Branco 3 und", price: 2.50 },
-        { name: "Stikadinho 1 und", price: 2.50 },
-        { name: "Bombom Ouro Branco", price: 3.00 },
-        { name: "Sucrilhos Original", price: 1.00 },
+        { name: "Abacaxi", price: 1.00, image: "./abacaxi.png" },
+        { name: "Banana", price: 0.00, image: "./banana.png" },
+        { name: "Manga", price: 1.00, image: "./manga.png" },
+        { name: "Morango", price: 5.00, image: "./morango.png" },
+        { name: "Pêssego em calda", price: 3.00, image: "./imagens/pessego-em-calda.jpg" },
+        { name: "Leite Condensado", price: 0.00, image: "./moca.png" },
+        { name: "Leite em pó", price: 0.00, image: "./leitepó.png" },
+        { name: "Paçoca", price: 0.00, image: "./paçoca.png" },
+        { name: "Chocoball", price: 2.00, image: "./chocobaal.png" },
+        { name: "M&Ms original", price: 7.00, image: "./mm.png" },
+        { name: " Cobertura de Nutella", price: 8.00, image: "./nutella.png" },
+        { name: " Recheio de Nutella", price: 12.00, image: "./nutella.png" },
+        { name: " Cobertura de Creme de Avelã", price: 5.00, image: "./cremeavela.png" },
+        { name: " Recheio de Creme de Avelã", price: 9.00, image: "./cremeavela.png" },
+        { name: " Cobertura de Creme Leitinho", price: 5.00, image: "./cremeleitinho.png" },
+        { name: " Recheio de Creme de leitinho", price: 9.00, image: "./cremeleitinho.png" },
+        { name: " Cobertura de Kinder Bueno", price: 5.00, image: "./imagens/cobertura-de-kinder-bueno.jpg" },
+        { name: " Recheio de Kinder Bueno", price: 9.00, image: "./imagens/recheio-de-kinder-bueno.jpg" },
+        { name: "Cupuaçu", price: 0.00, image: "./imagens/cupuacu.jpg" },
+        { name: "Granola", price: 0.00, image: "./granola.png" },
+        { name: "Jujubas", price: 1.00, image: "./imagens/jujubas.jpg" },
+        { name: "Bala de Goma", price: 1.00, image: "./goma.png" },
+        { name: "Calda Sabor Morango", price: 1.00, image: "./coberturamorango.png" },
+        { name: "Calda sabor Chocolate", price: 4.50, image: "./coberturacholate.png" },
+        { name: "Bis Preto 3 und", price: 2.50, image: "./bispreto.png" },
+        { name: "Bis Branco 3 und", price: 2.50, image: "./bisbranco.png" },
+        { name: "Stikadinho 1 und", price: 2.50, image: "./stikadinho.png" },
+        { name: "Bombom Ouro Branco", price: 3.00, image: "./bombom.png" },
+        { name: "Sucrilhos Original", price: 1.00, image: "./sucrilhos.png" },
       ];
 
       window.onload = function() {
@@ -791,7 +793,7 @@ html { scroll-behavior: smooth; }
         ALL_COMPLEMENTS.forEach((comp, index) => {
           const label = document.createElement('label');
           label.className = 'complement-item';
-          label.innerHTML = `<input type="checkbox" value="${index}" onchange="toggleComplement(${index}, this)"><span>${comp.name} (+R$${comp.price.toFixed(2).replace('.', ',')})</span>`;
+          label.innerHTML = `<div class="complement-item__image" aria-label="Espaço para imagem de ${comp.name}"><img src="${comp.image}" alt="${comp.name}" onerror="this.style.display='none'"></div><input type="checkbox" value="${index}" onchange="toggleComplement(${index}, this)"><span>${comp.name} (+R$${comp.price.toFixed(2).replace('.', ',')})</span>`;
           grid.appendChild(label);
         });
       }
