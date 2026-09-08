@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Açaí Sabor do Verão | Peça pelo Whats</title>
+    <title>Açaí Sabor do Verão | O Melhor da Região | Porto Alegre  </title>
     
     <!-- Meta Tags -->
 <!-- Open Graph / Facebook -->
@@ -332,43 +332,45 @@ html { scroll-behavior: smooth; }
       .menu-flip-section__header { text-align: center; margin-bottom: 30px; }
       .menu-flip-section__title { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--primary-color); }
       
-      /* MINI CARDS GRID ADJUSTMENT */
+      /* MINI CARDS TWO-COLUMN LIST */
       .menu-flip-section__grid { 
         display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+        grid-template-columns: repeat(2, minmax(0, 1fr)); 
         gap: 20px; 
         list-style: none; 
+        width: 100%;
+        max-width: 1050px;
+        margin: 0 auto;
       }
 
       /* MINI CARD FLIP LOGIC */
-      .menu-flip-card { perspective: 1000px; height: 380px; cursor: pointer; }
+      .menu-flip-card { perspective: 1000px; height: 180px; cursor: pointer; }
       .menu-flip-card__inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
       .menu-flip-card:hover .menu-flip-card__inner, .menu-flip-card.is-flipped .menu-flip-card__inner { transform: rotateY(180deg); }
       
       .menu-flip-card__face {
         position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-        border-radius: 15px; padding: 20px; display: flex; flex-direction: column;
-        align-items: center; justify-content: center; border: 2px solid #e910a1;
-        box-shadow: 0 8px 20px rgba(94, 4, 53, 0.4);
-        background:linear-gradient(
-135deg,
-#220027 20%,
-#79607c 50%,
-#530846 100%
-);
+        border-radius: 10px; padding: 12px; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; border: 1px solid #e5e5e5;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        background: #fff;
         transition: box-shadow 0.3s ease, transform 0.3s ease;
       }
 
-      .menu-flip-card:hover .menu-flip-card__face { box-shadow: 0 0 20px var(--primary-color); }
-      .menu-flip-card__face--back { transform: rotateY(180deg); background: linear-gradient(135deg, #059fce 0%, #ec33bef5 100%); }
+      .menu-flip-card:hover .menu-flip-card__face { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14); }
+      .menu-flip-card__face--back { transform: rotateY(180deg); background: #fff; }
       
       /* Categoria CARDS */
-      .menu-flip-card__media { width: 100%; height: 180px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; filter: drop-shadow(0 8px 8px rgba(0,0,0,0.1)); }
-      .menu-flip-card__media img { max-width: 100%; max-height: 100%; object-fit: contain; }
+      .menu-flip-card__face--front { flex-direction: row; align-items: center; justify-content: space-between; text-align: left; }
+      .menu-flip-card__front-info { min-width: 0; flex: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding-right: 12px; }
+      .menu-flip-card__front-info .menu-flip-card__description { text-align: left; margin: 2px 0; }
+      .menu-flip-card__front-info .menu-flip-card__price { margin: 1px 0; }
+      .menu-flip-card__media { order: 2; flex: 0 0 90px; width: 90px; height: 90px; display: flex; justify-content: center; align-items: center; margin: 0; filter: none; }
+      .menu-flip-card__media img { width: 90px; height: 90px; max-width: 100%; max-height: 100%; border-radius: 5px; object-fit: cover; }
       
-      .menu-flip-card__name { font-family: var(--font-display); font-size: 16px; color: #f0057a; text-align: center; text-shadow: 1px 1px 0px #070707; }
-      .menu-flip-card__description { font-size: 12px; text-align: center; margin: 10px 0; color: #fff; font-weight: 600; line-height: 1.4; }
-      .menu-flip-card__price { font-weight: 800; font-size: 15px; margin-bottom: 3px; color: #4b1d67; }
+      .menu-flip-card__name { font-family: 'Open Sans', sans-serif; font-size: 15px; color: #444; text-align: left; text-shadow: none; }
+      .menu-flip-card__description { font-size: 12px; text-align: center; margin: 8px 0; color: #666; font-weight: 600; line-height: 1.4; }
+      .menu-flip-card__price { font-weight: 800; font-size: 15px; margin-bottom: 3px; color: #333; }
 
       .btn-order-now {
         background-color: var(--primary-color); color: #ffffff !important; border: none;
@@ -457,9 +459,10 @@ html { scroll-behavior: smooth; }
       @media (max-width: 768px) {
         .desktop-nav { display: none; }
         .menu-flip-section__title { font-size: 1.8rem; }
-        .menu-flip-section__grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
-        .menu-flip-card { height: 320px; }
-        .menu-flip-card__media { height: 140px; }
+        .menu-flip-section__grid { grid-template-columns: 1fr; gap: 15px; }
+        .menu-flip-card { height: 150px; }
+        .menu-flip-card__media { flex-basis: 78px; width: 78px; height: 78px; }
+        .menu-flip-card__media img { width: 78px; height: 78px; }
         .brand-name { font-size: 18px; }
         .brand-logo { height: 35px; }
       }
@@ -488,7 +491,7 @@ html { scroll-behavior: smooth; }
 
      <!-- Hero -->
     <section class="hero">
-      <div class="hero-badge">🍧 O MELHOR AÇAÍ DE PORTO ALEGRE <BR> DE QUA A SEG DAS 19:00 AS 1:30</div>
+      <div class="hero-badge">🍧 O MELHOR AÇAÍ DE PORTO ALEGRE <BR> DE QUA A SEG DAS 14:00 AS 1:30</div>
       <h1>Escolha seu <span class="grad">Açaí Favorito</span> e peça pelo WhatsApp</h1>
       <p>Monte seu açaí do seu jeito ou escolha nossos combos especiais com leite moça, leite em pó, frutas e muito mais!</p>
     </section>
@@ -515,7 +518,7 @@ html { scroll-behavior: smooth; }
                 </div>
                 <div class="menu-flip-card__face menu-flip-card__face--back">
                   <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ ORIGEM</h3>
-                  <p class="menu-flip-card__description">Monte do seu jeito Origem! Escolha o tamanho e adicione seus complementos favoritos.</p>
+                  <p class="menu-flip-card__description">Monte do seu jeito Escolha o tamanho e adicione seus complementos favoritos.</p>
                   <p class="menu-flip-card__price">300ml R$ 21,00</p>
                   <p class="menu-flip-card__price">500ml R$ 28,50</p>
                   <p class="menu-flip-card__price">700ml R$ 34,90</p>
@@ -536,7 +539,7 @@ html { scroll-behavior: smooth; }
                   <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ POLPA NORTE</h3>
                 </div>
                 <div class="menu-flip-card__face menu-flip-card__face--back">
-                  <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ </h3>
+                  <h3 class="menu-flip-card__name">🍧 MONTE SEU AÇAÍ POLPA NORTE </h3>
                   <p class="menu-flip-card__description">Monte do seu jeito! Escolha o tamanho e adicione seus complementos favoritos.</p>
                   <p class="menu-flip-card__price">300ml R$ 25,00</p>
                   <p class="menu-flip-card__price">500ml R$ 32,50</p>
@@ -581,9 +584,9 @@ html { scroll-behavior: smooth; }
                 <div class="menu-flip-card__face menu-flip-card__face--back">
                   <h3 class="menu-flip-card__name">Combo leite moça leite em pó</h3>
                   <p class="menu-flip-card__description">Dois deliciosos copos de Açaí de 330ML com leite Moça e leite em pó.</p>
-                  <p class="menu-flip-card__price">330ml R$ 29,99</p>
+                  <p class="menu-flip-card__price">330ml R$ 32,00</p>
                   <p class="menu-flip-card__price">500ml R$ 55,00</p>
-                  <button class="btn-order-now" onclick="openOrderModal('Combo Duplo Leite Moça + Leite em Pó', 29.99, 55.00)">Quero este - Pedir Agora</button>
+                  <button class="btn-order-now" onclick="openOrderModal('Combo Duplo Leite Moça + Leite em Pó', 32.00, 55.00)">Quero este - Pedir Agora</button>
                 </div>
               </div>
             </article>
@@ -609,6 +612,155 @@ html { scroll-behavior: smooth; }
               </div>
             </article>
           </li>
+
+<!-- CARD 4-->
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card3">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
+                    <img src="./pessego3.png" alt="Combo Duplo de Frutas" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/pessego3.png'" />
+                  </figure>
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR BANANA</h3>
+                </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR BANANA</h3>
+                  <p class="menu-flip-card__description">Escolha o tamanho do seu copo  de Açai sabor Banana com leite condensado e leite em pó</p>
+                  <p class="menu-flip-card__price">330ml R$ 22,00</p>
+                  <p class="menu-flip-card__price">500ml R$ 30,00</p>
+                  <button class="btn-order-now" onclick="openOrderModal('Copo Sabor Banana', 20.00, 30.00)">Quero este - Pedir Agora</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <!-- CARD 6 -->
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card3">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
+                    <img src="./copo-manga.jpg" alt="Combo Duplo de Frutas" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/pessego3.png'" />
+                  </figure>
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR MANGA</h3>
+                </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR MANGA</h3>
+                  <p class="menu-flip-card__description">Escolha o tamanho do seu copo  de Açai sabor Manga com leite condensado e leite em pó</p>
+                  <p class="menu-flip-card__price">330ml R$ 20,00</p>
+                  <p class="menu-flip-card__price">500ml R$ 30,00</p>
+                  <button class="btn-order-now" onclick="openOrderModal('Copo Sabor Manga', 22.00, 30.00)">Quero este - Pedir Agora</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+                <!-- CARD 7 -->
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card3">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
+                    <img src="./pessego3.png" alt="Combo Duplo de Frutas" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/pessego3.png'" />
+                  </figure>
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR ABACAXI </h3>
+                </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR ABACAXI </h3>
+                  <p class="menu-flip-card__description">Escolha o tamanho do seu copo  de Açai sabor Abacaxi com leite condensado e leite em pó</p>
+                  <p class="menu-flip-card__price">330ml R$ 20,00</p>
+                  <p class="menu-flip-card__price">500ml R$ 30,00</p>
+                  <button class="btn-order-now" onclick="openOrderModal('Copo Sabor Abacaxi', 22.00, 30.00)">Quero este - Pedir Agora</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+                   <!-- COMBO-->
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card3">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
+                    <img src="./copo-pessego.jpg" alt="Combo Duplo de Frutas" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/pessego3.png'" />
+                  </figure>
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR PÊSSEGO EM CALDA </h3>
+                </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR PÊSSEGO EM CALDA </h3>
+                  <p class="menu-flip-card__description">Escolha o tamanho do seu copo  de Açai sabor Pêssego em calda com leite condensado e leite em pó</p>
+                  <p class="menu-flip-card__price">330ml R$ 20,00</p>
+                  <p class="menu-flip-card__price">500ml R$ 30,00</p>
+                  <button class="btn-order-now" onclick="openOrderModal('Copo Sabor Pêssego em calda', 23.50, 32.50)">Quero este - Pedir Agora</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+                        <!-- SOMENTE AÇAI -->
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card3">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
+                    <img src="./copo-acai.jpg" alt="Combo Duplo de Frutas" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/pessego3.png'" />
+                  </figure>
+                  <h3 class="menu-flip-card__name">COPO SOMENTE AÇAI </h3>
+                </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">COPO SOMENTE AÇAÍ </h3>
+                  <p class="menu-flip-card__description">Escolha o tamanho do seu copo somente com Açai /p>
+                  <p class="menu-flip-card__price">330ml R$ 18,00</p>
+                  <p class="menu-flip-card__price">500ml R$ 26,00</p>
+                  <button class="btn-order-now" onclick="openOrderModal('Copo somente Açaí', 18.00, 26.00)">Quero este - Pedir Agora</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+
+                     <!-- SABOR MORANGO -->
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card3">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
+                    <img src="./copo-morango.png" alt="Combo Duplo de Frutas" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/pessego3.png'" />
+                  </figure>
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR MORANGO</h3>
+                </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR MORANGO </h3>
+                  <p class="menu-flip-card__description">Escolha o tamanho do seu copo  de Açai sabor Pêssego em calda com leite condensado e leite em pó</p>
+                  <p class="menu-flip-card__price">330ml R$ 27,50</p>
+                  <p class="menu-flip-card__price">500ml R$ 35,50</p>
+                  <button class="btn-order-now" onclick="openOrderModal('Copo Sabor Morango ', 27.50, 35.50)">Quero este - Pedir Agora</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+           <!-- SABOR MIX -->
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card3">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <figure class="menu-flip-card__media">
+                    <img src="./copo-mix.jpg" alt="Combo Duplo de Frutas" onerror="this.src='https://kraskin-websites.github.io/promo-aocomboduplo/pessego3.png'" />
+                  </figure>
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR MIX</h3>
+                </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">COPO DE AÇAÍ SABOR MIX </h3>
+                  <p class="menu-flip-card__description">Escolha o tamanho do seu copo  de Açai sabor mix com Morando, Banana, leite condensado e leite em pó</p>
+                  <p class="menu-flip-card__price">330ml R$ 27,50</p>
+                  <p class="menu-flip-card__price">500ml R$ 35,50</p>
+                  <button class="btn-order-now" onclick="openOrderModal('Copo Sabor Morango ', 29.50, 36.50)">Quero este - Pedir Agora</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
         </ul>
       </section>
     </main>
@@ -696,6 +848,8 @@ html { scroll-behavior: smooth; }
         <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/nutella.png" class="kb-footer__logo"></li>
         <li><img src="https://kraskin-websites.github.io/promo-aocomboduplo/elege.png" class="kb-footer__logo"></li>
       </ul>
+      
+      <h7>Criado por Kraskin Websites | © 2026 </h7>
     </footer>
 
     <script>
@@ -712,18 +866,19 @@ html { scroll-behavior: smooth; }
         { name: "Banana", price: 0.00, image: "./banana.png" },
         { name: "Manga", price: 1.00, image: "./manga.png" },
         { name: "Morango", price: 5.00, image: "./morango.png" },
-        { name: "Pêssego em calda", price: 3.00, image: "./pessego.jpeg" },
+        { name: "Pêssego em calda", price: 1.50, image: "./pessego.jpeg" },
         { name: "Leite Condensado", price: 0.00, image: "./moca.png" },
         { name: "Leite em pó", price: 0.00, image: "./leitepó.png" },
         { name: "Paçoca", price: 0.00, image: "./paçoca.png" },
         { name: "Chocoball", price: 2.00, image: "./chocobaal.png" },
-        { name: "M&Ms original", price: 7.00, image: "./mm.png" },
+       { name: "MMS original", price: 7.00, image: "./mm.png" },
         { name: " Cobertura de Nutella", price: 8.00, image: "./nutella.png" },
         { name: " Recheio de Nutella", price: 12.00, image: "./nutella.png" },
+         { name: " Pote de Nutella 140g ", price: 19.00, image: "./nutella.png" },
         { name: " Cobertura de Creme de Avelã", price: 5.00, image: "./cremeavela.png" },
         { name: " Recheio de Creme de Avelã", price: 9.00, image: "./cremeavela.png" },
         { name: " Cobertura de Creme Leitinho", price: 5.00, image: "./cremeleitinho.png" },
-        { name: " Recheio de Creme de leitinho", price: 9.00, image: "./cremeleitinho.png" },
+        { name: " Recheio de Creme leitinho", price: 9.00, image: "./cremeleitinho.png" },
         { name: " Cobertura de Kinder Bueno", price: 5.00, image: "./kinder.jpg" },
         { name: " Recheio de Kinder Bueno", price: 9.00, image: "./kinder.jpg" },
         { name: "Cupuaçu", price: 0.00, image: "./cupuacu.jpg" },
@@ -967,7 +1122,24 @@ html { scroll-behavior: smooth; }
         window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
       };
 
+      // Repete no lado frontal o resumo do produto, mantendo o botão de pedido no verso.
+      document.querySelectorAll('.menu-flip-card').forEach(card => {
+        const front = card.querySelector('.menu-flip-card__face--front');
+        const back = card.querySelector('.menu-flip-card__face--back');
+        const media = front && front.querySelector('.menu-flip-card__media');
+        const name = front && front.querySelector('.menu-flip-card__name');
+        if (!front || !back || !media || !name) return;
+        const info = document.createElement('div');
+        info.className = 'menu-flip-card__front-info';
+        info.appendChild(name);
+        back.querySelectorAll('.menu-flip-card__description, .menu-flip-card__price').forEach(item => {
+          info.appendChild(item.cloneNode(true));
+        });
+        front.insertBefore(info, media);
+      });
+
       window.onclick = function(e) { if (e.target == document.getElementById('orderModal')) closeOrderModal(); };
     </script>
   </body>
 </html>
+
