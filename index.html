@@ -521,7 +521,7 @@ html { scroll-behavior: smooth; }
         .navbar-container { min-height: 60px; padding: 0.55rem 0.75rem; gap: 0.5rem; }
         .brand-container { min-width: 0; flex: 1 1 auto; gap: 0.55rem; }
         .brand-logo { flex: 0 0 38px; width: 38px; height: 38px; object-fit: cover; }
-        .brand-name { min-width: 0; max-width: calc(100vw - 105px); font-size: clamp(11px, 3.5vw, 14px); line-height: 1.12; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .brand-name { min-width: 0; max-width: 65%; font-size: 13px; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .menu-toggle { flex: 0 0 40px; width: 40px; height: 40px; border-radius: 10px; font-size: 24px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); }
         .mobile-nav { border-top: 1px solid rgba(255,255,255,.18); box-shadow: 0 8px 14px rgba(0,0,0,.2); }
         .mobile-nav a { padding: 14px 16px; font-size: 12px; letter-spacing: .2px; }
@@ -900,7 +900,77 @@ html { scroll-behavior: smooth; }
 
         </ul>
 
-        <h3 id="categoria-bebidas" class="menu-category menu-category--empty">Bebidas</h3>
+        <h3 id="categoria-bebidas" class="menu-category">Bebidas</h3>
+        <ul class="menu-flip-section__grid">
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card-bebida-coca-lata">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <img src="./LATA350ML.jpg" class="menu-flip-card__media" aria-label="Coca-Cola lata"></img>
+                  <h3 class="menu-flip-card__name">COCA-COLA LATA 350ml <span style="color: rgb(252, 0, 139);">R$7</span></h3>
+                </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">COCA-COLA LATA</h3>
+                  <p class="menu-flip-card__description">350ml</p>
+                  <p class="menu-flip-card__price">Unidade R$ 7,00</p>
+                  <button class="btn-order-now" onclick="openDrinkModal('Coca-Cola Lata', 7.00)">Quero este - Pedir Agora</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card-bebida-coca-2l">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <img src="./pet2litros.jpg" class="menu-flip-card__media" aria-label="Coca-Cola 2 litros"></img>
+                  <h3 class="menu-flip-card__name">COCA-COLA 2 LITROS <span style="color: rgb(252, 0, 139);">R$17</span></h3>
+                </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">COCA-COLA 2 LITROS</h3>
+                  <p class="menu-flip-card__description">2 LITROS.</p>
+                  <p class="menu-flip-card__price">Unidade R$ 17,00</p>
+                  <button class="btn-order-now" onclick="openDrinkModal('Coca-Cola 2 Litros', 17.00)">Quero este - Pedir Agora</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card-bebida-agua-sem-gas">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <img src="./aguacomgas.jpg" class="menu-flip-card__media" aria-label="Água sem gás"></img>
+                  <h3 class="menu-flip-card__name">ÁGUA SEM GÁS <span style="color: rgb(252, 0, 139);">R$5</span></h3>
+                </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">ÁGUA SEM GÁS DA PEDRA</h3>
+                  <p class="menu-flip-card__description">500ML</p>
+                  <p class="menu-flip-card__price">Unidade R$ 5,00</p>
+                  <button class="btn-order-now" onclick="openDrinkModal('Água sem Gás', 5.00)">Quero este - Pedir Agora</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li class="menu-flip-section__item">
+            <article class="menu-flip-card" id="card-bebida-agua-com-gas">
+              <div class="menu-flip-card__inner">
+                <div class="menu-flip-card__face menu-flip-card__face--front">
+                  <img src="./aguasemgas.jpg" class="menu-flip-card__media" aria-label="Água com gás"></img>
+                  <h3 class="menu-flip-card__name">ÁGUA COM GÁS DA PEDRA <span style="color: rgb(252, 0, 139);">R$5</span></h3>
+                </div>
+                <div class="menu-flip-card__face menu-flip-card__face--back">
+                  <h3 class="menu-flip-card__name">ÁGUA COM GÁS</h3>
+                  <p class="menu-flip-card__description">500ML</p>
+                  <p class="menu-flip-card__price">Unidade R$ 5,00</p>
+                  <button class="btn-order-now" onclick="openDrinkModal('Água com Gás', 5.00)">Quero este - Pedir Agora</button>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+
         <h3 id="categoria-bolo" class="menu-category menu-category--empty">Bolo no pote</h3>
       </section>
     </main>
@@ -1096,6 +1166,21 @@ html { scroll-behavior: smooth; }
 
       window.openMonteSeuAcai = function() { openOrderModal("🍧 Monte seu Açaí", 25.00, 32.50, 36.90); };
       window.openMonteSeuAcaiOrigem = function() { openOrderModal("🍧 Monte seu Açaí Origem", 21.00, 28.50, 34.90); };
+
+      window.openDrinkModal = function(name, price) {
+        currentItem = {
+          product: name, size: "Unidade", qty: 1, price: price,
+          isMonteSeuAcai: false, complements: [], complementsPrice: 0,
+          sizePrices: { "Unidade": price }, sizeLimits: {}
+        };
+        document.getElementById('modalProductName').innerText = name;
+        document.getElementById('orderModal').classList.add('active');
+        document.getElementById('complementsSection').style.display = 'none';
+        document.getElementById('modalComplementsSummary').style.display = 'none';
+        renderSizeOptions();
+        goToStep(1);
+        selectSize('Unidade');
+      };
 
       function renderSizeOptions() {
         const container = document.getElementById('modalSizeOptions');
